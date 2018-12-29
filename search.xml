@@ -23,31 +23,6 @@
     
     
     <entry>
-      <title>Test</title>
-      <link href="/2018/12/29/test/"/>
-      <url>/2018/12/29/test/</url>
-      
-        <content type="html"><![CDATA[<p>试一下看看效果</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Typora </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Typora </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hello World</title>
       <link href="/2018/12/29/hello-world/"/>
       <url>/2018/12/29/hello-world/</url>
