@@ -8,11 +8,7 @@
     <meta name="keywords" content="Python Basics, MSJX">
     <meta name="description" content="
 尽量用enumerate取代range：
-Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器
-
-
-  
-  ，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来">
+Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -255,35 +251,33 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
             <div id="articleContent">
                 <ul>
 <li><p>尽量用<strong>enumerate</strong>取代<strong>range</strong>：</p>
-<p>Python提供了一个内置函数enumerate，可以把各种<strong>迭代器</strong>包装成为一个<strong>生成器</strong></p>
-</li>
-</ul>
-  <a id="more"></a>
-<p>  ，生成器每次产生一对输出值，前者表示<strong>循环下标</strong>，后者表示从迭代器获取到的下一个<strong>序列元素</strong>。这样写出来的代码非常简洁。</p>
-<pre class=" language-python"><code class="language-python">  flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
-  <span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （<span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span>）<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
+<p>Python提供了一个内置函数enumerate，可以把各种<strong>迭代器</strong>包装成为一个<strong>生成器</strong><a id="more"></a>，生成器每次产生一对输出值，前者表示<strong>循环下标</strong>，后者表示从迭代器获取到的下一个<strong>序列元素</strong>。这样写出来的代码非常简洁。</p>
+<pre class=" language-python"><code class="language-python">flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （<span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span>）<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
 </code></pre>
-<pre><code>  &gt;&gt;&gt;
-  1 : vanilla
-  2 : chocolate
-  3 : pecan
-  4 : strawberry
-</code></pre><p>  （<strong>注</strong>：列表的下标从0开始的）</p>
-<p>  还可以直接指定enumerate函数开始时所用的值，如下所示：</p>
-<pre class=" language-python"><code class="language-python">  flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
-  <span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （i<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
+<pre><code>&gt;&gt;&gt;
+1 : vanilla
+2 : chocolate
+3 : pecan
+4 : strawberry
+</code></pre><p>（<strong>注</strong>：列表的下标从0开始的）</p>
+<p>还可以直接指定enumerate函数开始时所用的值，如下所示：</p>
+<pre class=" language-python"><code class="language-python">flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （i<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
 </code></pre>
-<pre><code>  &gt;&gt;&gt;
-  1 : vanilla
-  2 : chocolate
-  3 : pecan
-  4 : strawberry
+<pre><code>&gt;&gt;&gt;
+1 : vanilla
+2 : chocolate
+3 : pecan
+4 : strawberry
 </code></pre><ul>
 <li>enumerate函数提供了一种精简的写法，可以在遍历迭代器时获知每个元素的索引。</li>
 <li>尽量用enumerate来改写那种将range与下标访问相结合的序列遍历代码。</li>
 <li>可以给enumerate提供第二个参数，以指定开始计数时所用的值（默认是0）。</li>
+</ul>
+</li>
 </ul>
 
             </div>
@@ -459,11 +453,7 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
                 <div class="card-content article-content">
                     <div class="summary">
 尽量用enumerate取代range：
-Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器
-
-
-  
-  ，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来</div>
+Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
