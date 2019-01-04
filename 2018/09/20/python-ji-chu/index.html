@@ -251,7 +251,7 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
             <div id="articleContent">
                 <ul>
 <li><p>尽量用<strong>enumerate</strong>取代<strong>range</strong>：</p>
-<p>Python提供了一个内置函数enumerate，可以把各种<strong>迭代器</strong>包装成为一个<strong>生成器</strong>，生成器每次产生一对输出值，前者表示<strong>循环下标</strong>，后者表示从迭代器获取到的下一个<strong>序列元素</strong>。这样写出来的代码非常简洁。</p>
+<p>Python提供了一个内置函数enumerate，可以把各种<strong>迭代器</strong>包装成为一个<strong>生成器</strong><a id="more"></a>，生成器每次产生一对输出值，前者表示<strong>循环下标</strong>，后者表示从迭代器获取到的下一个<strong>序列元素</strong>。这样写出来的代码非常简洁。</p>
 <pre class=" language-python"><code class="language-python">flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
 <span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （<span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span>）<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
