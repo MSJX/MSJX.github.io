@@ -86,7 +86,7 @@ hr {
 }
 
 blockquote {
-    border-left: 5px solid #42b983;
+    border-left: 5px solid #f44336;
     padding: 1rem 0.8rem 0.2rem 0.8rem;
     color: #666;
     background-color: rgba(66, 185, 131, .1);
@@ -166,7 +166,7 @@ mark {
 }
 
 .text-color {
-    color: #0f9d58 !important;
+    color: #f44336 !important;
 }
 
 /*头部导航栏样式*/
@@ -647,7 +647,7 @@ article a {
 
 article a:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #f44336;
     text-decoration: underline;
 }
 
@@ -825,7 +825,7 @@ article .article-tags .chip {
 
 #artDetail .post-info .post-category:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #f44336;
     text-decoration: underline;
 }
 
@@ -873,7 +873,7 @@ article .article-tags .chip {
 
 #artDetail .reprint a {
     font-size: 1.05rem;
-    color: #42b983;
+    color: #f44336;
     font-weight: 500;
 }
 
@@ -889,7 +889,7 @@ article .article-tags .chip {
 
 #articleContent a {
     padding: 0 2px;
-    color: #42b983;
+    color: #f44336;
     font-weight: 500;
     text-decoration: underline;
 }
@@ -1009,7 +1009,7 @@ table tr:nth-child(2n), thead {
 
 .chip-container .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%) !important;
+    background: linear-gradient(to right, #f44336 0%, #f95f3f 100%) !important;
 }
 
 .chip .tag-length {
@@ -1084,7 +1084,7 @@ table tr:nth-child(2n), thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #0f9d58;
+    background: #f44336;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1299,7 +1299,7 @@ table tr:nth-child(2n), thead {
 }
 
 .post-statis .statis .count a {
-    color: #42b983;
+    color: #f44336;
 }
 
 .post-statis .statis .name {
@@ -1320,8 +1320,8 @@ table tr:nth-child(2n), thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: 1px solid #0f9d58;
-    background: radial-gradient(#4cbf30, #0f9d58);;
+    border: 1px solid #f44336;
+    background: radial-gradient(#ff746f, #f44336);;
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1496,8 +1496,8 @@ table tr:nth-child(2n), thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);;
-    border: 1px solid #4cbf30;
+    background: linear-gradient(to right, #ff746f 0%, #f44336 100%);;
+    border: 1px solid #ff746f;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
 
@@ -1558,7 +1558,7 @@ footer .copy-right {
 
 .search-result-list .search-result-title {
     font-size: 1.4rem;
-    color: #42b983;
+    color: #f44336;
 }
 
 .search-result-list li {
