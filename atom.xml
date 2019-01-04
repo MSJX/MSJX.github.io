@@ -70,7 +70,7 @@
     <link href="http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/"/>
     <id>http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/</id>
     <published>2018-08-23T05:47:44.000Z</published>
-    <updated>2019-01-04T06:00:40.749Z</updated>
+    <updated>2019-01-04T06:05:05.138Z</updated>
     
     <summary type="html">
     
@@ -78,7 +78,9 @@
       
         
         
-          &lt;p&gt;本次主要记录MySQL数据库如何创建、使用存储过程&lt;/p&gt;
+          &lt;ul&gt;
+&lt;li&gt;本次主要记录MySQL数据库如何创建、使用存储过程&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&quot;什么是存储过程&quot;&gt;&lt;a href=&quot;#什么是存储过程&quot; class=&quot;headerlink&quot;
         
       
