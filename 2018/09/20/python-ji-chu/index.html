@@ -5,8 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, MSJX">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Python Basics, MSJX">
+    <meta name="description" content="
+尽量用enumerate取代range：
+Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | MSJX</title>
+    <title>Python Basics | MSJX</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -204,13 +206,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        Python Basics
                     </div>
                 </div>
             </div>
@@ -230,8 +232,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/Test/" target="_blank">
-                    <span class="chip bg-color">Test</span>
+                <a href="/tags/Python/" target="_blank">
+                    <span class="chip bg-color">Python</span>
                 </a>
                 
             </div>
@@ -240,26 +242,43 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-29
+                    <i class="fa fa-clock-o fa-fw"></i>2018-09-20
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+                <ul>
+<li><p>尽量用<strong>enumerate</strong>取代<strong>range</strong>：</p>
+<p>Python提供了一个内置函数enumerate，可以把各种<strong>迭代器</strong>包装成为一个<strong>生成器</strong>，生成器每次产生一对输出值，前者表示<strong>循环下标</strong>，后者表示从迭代器获取到的下一个<strong>序列元素</strong>。这样写出来的代码非常简洁。</p>
+<pre class=" language-python"><code class="language-python">flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （<span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span>）<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+<pre><code>&gt;&gt;&gt;
+1 : vanilla
+2 : chocolate
+3 : pecan
+4 : strawberry
+</code></pre><p>（<strong>注</strong>：列表的下标从0开始的）</p>
+<p>还可以直接指定enumerate函数开始时所用的值，如下所示：</p>
+<pre class=" language-python"><code class="language-python">flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （i<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<pre><code>&gt;&gt;&gt;
+1 : vanilla
+2 : chocolate
+3 : pecan
+4 : strawberry
+</code></pre><ul>
+<li>enumerate函数提供了一种精简的写法，可以在遍历迭代器时获知每个元素的索引。</li>
+<li>尽量用enumerate来改写那种将range与下标访问相结合的序列遍历代码。</li>
+<li>可以给enumerate提供第二个参数，以指定开始计数时所用的值（默认是0）。</li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -398,7 +417,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://msjx.site" class="b-link-green">MSJX</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/29/hello-world/" class="b-link-green">Hello World</a>
+                    <a href="/2018/09/20/python-ji-chu/" class="b-link-green">Python Basics</a>
                 </p>
             </div>
         </div>
@@ -420,24 +439,25 @@
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
-                <a href="/2018/12/29/test-1/">
+                <a href="/2018/09/20/python-ji-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Test">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Python Basics">
                         
-                        <span class="card-title">Test</span>
+                        <span class="card-title">Python Basics</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">检验最后成果的时候到了！！！
-</div>
+                    <div class="summary">
+尽量用enumerate取代range：
+Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -446,11 +466,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Test/" target="_blank">
-                        <span class="chip bg-color">Test</span>
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>
@@ -472,12 +493,10 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-本次主要记录MySQL数据库如何创建、使用存储过程
-
-什么是存储过程
+                    <div class="summary">什么是存储过程
 存储过程是存储在数据库服务器中的一组SQL语句，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行 。
-存储过程可以用来封装特定功能</div>
+存储过程可以用来封装特定功能，以便应用于不同的平台，可以看做对面向对象编程的模拟 
+</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-23

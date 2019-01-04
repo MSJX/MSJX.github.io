@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://msjx.site/"/>
-  <updated>2018-12-29T09:31:16.979Z</updated>
+  <updated>2019-01-04T06:10:14.146Z</updated>
   <id>http://msjx.site/</id>
   
   <author>
@@ -17,60 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Test</title>
-    <link href="http://msjx.site/2018/12/29/test-1/"/>
-    <id>http://msjx.site/2018/12/29/test-1/</id>
-    <published>2018-12-29T09:30:24.000Z</published>
-    <updated>2018-12-29T09:31:16.979Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;检验最后成果的时候到了！！！&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Test" scheme="http://msjx.site/tags/Test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://msjx.site/2018/12/29/hello-world/"/>
-    <id>http://msjx.site/2018/12/29/hello-world/</id>
-    <published>2018-12-29T07:03:28.376Z</published>
-    <updated>2019-01-04T01:23:13.902Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Test" scheme="http://msjx.site/tags/Test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL存储过程</title>
-    <link href="http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/"/>
-    <id>http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/</id>
-    <published>2018-08-23T05:47:44.000Z</published>
-    <updated>2019-01-04T06:05:05.138Z</updated>
+    <title>Python Basics</title>
+    <link href="http://msjx.site/2018/09/20/python-ji-chu/"/>
+    <id>http://msjx.site/2018/09/20/python-ji-chu/</id>
+    <published>2018-09-20T06:09:06.000Z</published>
+    <updated>2019-01-04T06:10:14.146Z</updated>
     
     <summary type="html">
     
@@ -79,9 +30,32 @@
         
         
           &lt;ul&gt;
-&lt;li&gt;本次主要记录MySQL数据库如何创建、使用存储过程&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;什么是存储过程&quot;&gt;&lt;a href=&quot;#什么是存储过程&quot; class=&quot;headerlink&quot;
+&lt;li&gt;&lt;p&gt;尽量用&lt;strong&gt;enumerate&lt;/strong&gt;取代&lt;strong&gt;range&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;Python提供了一个内置函数enumerate，可以把各种&lt;strong&gt;迭代器&lt;/strong&gt;包装成为一个&lt;strong&gt;生成
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://msjx.site/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL存储过程</title>
+    <link href="http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/"/>
+    <id>http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/</id>
+    <published>2018-08-23T05:47:44.000Z</published>
+    <updated>2019-01-04T06:05:58.177Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;什么是存储过程&quot;&gt;&lt;a href=&quot;#什么是存储过程&quot; class=&quot;headerlink&quot;
         
       
     
