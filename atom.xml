@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://msjx.site/"/>
-  <updated>2019-01-04T05:49:32.103Z</updated>
+  <updated>2018-12-29T09:31:16.979Z</updated>
   <id>http://msjx.site/</id>
   
   <author>
@@ -15,30 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>MySQL存储过程</title>
-    <link href="http://msjx.site/2019/01/04/mysql-cun-chu-guo-cheng/"/>
-    <id>http://msjx.site/2019/01/04/mysql-cun-chu-guo-cheng/</id>
-    <published>2019-01-04T05:47:44.000Z</published>
-    <updated>2019-01-04T05:49:32.103Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;什么是存储过程&quot;&gt;&lt;a href=&quot;#什么是存储过程&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="MySQL" scheme="http://msjx.site/tags/MySQL/"/>
-    
-  </entry>
   
   <entry>
     <title>Test</title>
@@ -86,6 +62,31 @@
     
     
       <category term="Test" scheme="http://msjx.site/tags/Test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL存储过程</title>
+    <link href="http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/"/>
+    <id>http://msjx.site/2018/08/23/mysql-cun-chu-guo-cheng/</id>
+    <published>2018-08-23T05:47:44.000Z</published>
+    <updated>2019-01-04T06:00:40.749Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本次主要记录MySQL数据库如何创建、使用存储过程&lt;/p&gt;
+&lt;h3 id=&quot;什么是存储过程&quot;&gt;&lt;a href=&quot;#什么是存储过程&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://msjx.site/tags/MySQL/"/>
     
   </entry>
   
