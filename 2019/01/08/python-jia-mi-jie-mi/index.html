@@ -374,12 +374,6 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
 <p>  def encrypt(content):<br>      data = content.encode(‘utf-8’)<br>      cipher = AES.new(key, AES.MODE_EAX)<br>      nonce = cipher.nonce<br>      cipher_text, tag = cipher.encrypt_and_digest(data)<br>      return cipher_text</p>
 <p>  print(encrypt(‘Test Python AES’))</p>
 <pre><code>
-
-
-  结果如下：
-
-
-
   ```python
   E:/company/1226/JsonRPC/en_decode/AES_crypto.py
   b&#39;\x10e.\x0b\xcc\x1f\xdd\xb7\x1fE\x8a4M\xdc\xd5&#39;
@@ -393,10 +387,6 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
 </ul>
 <p>  def decrypt(self):<br>      cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)<br>      plaintext = (cipher.decrypt(cipher_text)).decode(‘utf-8’)<br>      try:<br>          cipher.verify(tag)<br>          return plaintext<br>      except:<br>          return “key incorrect or message corrupted”</p>
 <pre><code>
-
-
-  结果如下：
-
   ```python
   E:/company/1226/JsonRPC/en_decode/AES_crypto.py
   Test Python AES
