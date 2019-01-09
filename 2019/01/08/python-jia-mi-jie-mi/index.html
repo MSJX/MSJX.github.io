@@ -371,6 +371,15 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
 <span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
 
 key <span class="token operator">=</span> get_random_bytes<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">encrypto</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> content<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+    cipher <span class="token operator">=</span> AES<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> AES<span class="token punctuation">.</span>MODE_EAX<span class="token punctuation">)</span>
+    nonce <span class="token operator">=</span> nonce
+    cipher_text<span class="token punctuation">,</span> tag <span class="token operator">=</span> cipher<span class="token punctuation">.</span>encrypt_and_digest<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> cipher_text
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>encrypt<span class="token punctuation">(</span><span class="token string">'Test Python AES'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 </li>
 </ul>
