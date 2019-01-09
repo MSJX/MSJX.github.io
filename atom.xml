@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://msjx.site/"/>
-  <updated>2019-01-09T01:27:33.654Z</updated>
+  <updated>2019-01-09T01:34:22.996Z</updated>
   <id>http://msjx.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://msjx.site/2019/01/08/python-jia-mi-jie-mi/"/>
     <id>http://msjx.site/2019/01/08/python-jia-mi-jie-mi/</id>
     <published>2019-01-08T10:43:11.000Z</published>
-    <updated>2019-01-09T01:27:33.654Z</updated>
+    <updated>2019-01-09T01:34:22.996Z</updated>
     
     <summary type="html">
     
@@ -38,7 +38,7 @@
       <category term="Python" scheme="http://msjx.site/categories/Python/"/>
     
     
-      <category term="Python,加密" scheme="http://msjx.site/tags/Python-%E5%8A%A0%E5%AF%86/"/>
+      <category term="Python" scheme="http://msjx.site/tags/Python/"/>
     
   </entry>
   
