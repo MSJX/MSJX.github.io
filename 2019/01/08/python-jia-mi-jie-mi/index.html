@@ -367,10 +367,12 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
 </ul>
 <h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><ul>
 <li><p><strong>加密</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
-</code></pre>
+<p><code>`</code>python<br>from Crypto.Cipher import AES<br>from Crypto.Random import get_random_bytes</p>
+<p>key = get_random_bytes(16)</p>
 </li>
 </ul>
+<p>  def encrypt(content):<br>      data = content.encode(‘utf-8’)<br>      cipher = AES.new(key, AES.MODE_EAX)<br>      nonce = cipher.nonce<br>      cipher_text, tag = cipher.encrypt_and_digest(data)<br>      return cipher_text</p>
+<p>  print(encrypt(‘Test Python AES’))<br>  <code>`</code></p>
 
             </div>
             <hr>
