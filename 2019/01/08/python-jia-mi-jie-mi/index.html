@@ -330,6 +330,10 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
                     <span class="chip bg-color">Python</span>
                 </a>
                 
+                <a href="/tags/加密/" target="_blank">
+                    <span class="chip bg-color">加密</span>
+                </a>
+                
             </div>
             
             <div class="post-info">
@@ -381,6 +385,33 @@ key <span class="token operator">=</span> get_random_bytes<span class="token pun
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>encrypt<span class="token punctuation">(</span><span class="token string">'Test Python AES'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
+<pre class=" language-python"><code class="language-python">E<span class="token punctuation">:</span><span class="token operator">/</span>company<span class="token operator">/</span><span class="token number">1226</span><span class="token operator">/</span>JsonRPC<span class="token operator">/</span>en_decode<span class="token operator">/</span>AES_crypto<span class="token punctuation">.</span>py
+b<span class="token string">'u\xed\xdc=D\x17\x83\xac\xbf\xc5\xe5p5A\x1a'</span>
+
+Process finished <span class="token keyword">with</span> exit code <span class="token number">0</span>
+</code></pre>
+</li>
+<li><p><strong>解密</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
+
+key <span class="token operator">=</span> get_random_bytes<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">decrypt</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cipher <span class="token operator">=</span> AES<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> AES<span class="token punctuation">.</span>MODE_EAX<span class="token punctuation">,</span> nonce<span class="token operator">=</span>nonce<span class="token punctuation">)</span>
+    plaintext <span class="token operator">=</span> <span class="token punctuation">(</span>cipher<span class="token punctuation">.</span>decrypt<span class="token punctuation">(</span>cipher_text<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        cipher<span class="token punctuation">.</span>verify<span class="token punctuation">(</span>tag<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> plaintext
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"key incorrect or message corrupted"</span>
+</code></pre>
+<pre class=" language-python"><code class="language-python">E<span class="token punctuation">:</span><span class="token operator">/</span>company<span class="token operator">/</span><span class="token number">1226</span><span class="token operator">/</span>JsonRPC<span class="token operator">/</span>en_decode<span class="token operator">/</span>AES_crypto<span class="token punctuation">.</span>py
+Test Python AES
+
+Process finished <span class="token keyword">with</span> exit code <span class="token number">0</span>
+</code></pre>
+<p>解密过程中的<strong>key、nonce、tag</strong>必须与<strong>cipher_text</strong>在加密过程中生成的<strong>key、nonce、tag</strong>一致，否则会报错。</p>
 </li>
 </ul>
 
@@ -579,6 +610,10 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
                     
                     <a href="/tags/Python/" target="_blank">
                         <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/加密/" target="_blank">
+                        <span class="chip bg-color">加密</span>
                     </a>
                     
                 </div>
