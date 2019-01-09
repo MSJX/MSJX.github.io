@@ -5,10 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Python Basics, MSJX">
-    <meta name="description" content="
-尽量用enumerate取代range：
-Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。">
+    <meta name="keywords" content="Python AES and RSA, MSJX">
+    <meta name="description" content="PyCryptodome包
+PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为PyCryptodome的库来代替PyCryto，下面简单介">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Python Basics | MSJX</title>
+    <title>Python AES and RSA | MSJX</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -210,13 +209,13 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Python Basics
+                        Python AES and RSA
                     </div>
                 </div>
             </div>
@@ -346,41 +345,33 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-09-20
+                    <i class="fa fa-clock-o fa-fw"></i>2019-01-08
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li><p>尽量用<strong>enumerate</strong>取代<strong>range</strong>：</p>
-<p>Python提供了一个内置函数enumerate，可以把各种<strong>迭代器</strong>包装成为一个<strong>生成器</strong>，生成器每次产生一对输出值，前者表示<strong>循环下标</strong>，后者表示从迭代器获取到的下一个<strong>序列元素</strong>。这样写出来的代码非常简洁。</p>
-<pre class=" language-python"><code class="language-python">flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （<span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span>）<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
-</code></pre>
-<pre><code>&gt;&gt;&gt;
-1 : vanilla
-2 : chocolate
-3 : pecan
-4 : strawberry
-</code></pre><p>（<strong>注</strong>：列表的下标从0开始的）</p>
-<p>还可以直接指定enumerate函数开始时所用的值，如下所示：</p>
-<pre class=" language-python"><code class="language-python">flavor_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'vanilla'</span><span class="token punctuation">,</span><span class="token string">'chocolate'</span><span class="token punctuation">,</span><span class="token string">'pecan'</span><span class="token punctuation">,</span><span class="token string">'strawberry'</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i<span class="token punctuation">,</span>flavor <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>flavor_list<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d : %s'</span> <span class="token operator">%</span> （i<span class="token punctuation">,</span>flavor<span class="token punctuation">)</span>）
-</code></pre>
-<pre><code>&gt;&gt;&gt;
-1 : vanilla
-2 : chocolate
-3 : pecan
-4 : strawberry
-</code></pre><ul>
-<li>enumerate函数提供了一种精简的写法，可以在遍历迭代器时获知每个元素的索引。</li>
-<li>尽量用enumerate来改写那种将range与下标访问相结合的序列遍历代码。</li>
-<li>可以给enumerate提供第二个参数，以指定开始计数时所用的值（默认是0）。</li>
+                <h3 id="PyCryptodome包"><a href="#PyCryptodome包" class="headerlink" title="PyCryptodome包"></a>PyCryptodome包</h3><ul>
+<li><strong>PyCryto</strong>应该是Python最著名的第三方库了，奈何<strong>PyCryto</strong>在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为<strong>PyCryptodome</strong>的库来代替<strong>PyCryto</strong>，下面简单介绍一下<strong>PyCryptodome</strong>这个库的用法，主要是AES结合RSA使用。</li>
 </ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p><strong>Linux</strong></p>
+<pre class=" language-python"><code class="language-python">pip install pycryptodome
+</code></pre>
+</li>
+<li><p><strong>Windows</strong></p>
+<pre class=" language-Python"><code class="language-Python">pip install pycryptodomex
+</code></pre>
+</li>
+</ul>
+<h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><ul>
+<li><p><strong>加密</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
+
+key <span class="token operator">=</span> get_random_bytes<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
+</code></pre>
 </li>
 </ul>
 
@@ -521,7 +512,7 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://msjx.site" class="b-link-green">MSJX</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/09/20/python-ji-chu/" class="b-link-green">Python Basics</a>
+                    <a href="/2019/01/08/python-jia-mi-jie-mi/" class="b-link-green">Python AES and RSA</a>
                 </p>
             </div>
         </div>
@@ -543,7 +534,7 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
                 <a href="/2019/01/08/python-jia-mi-jie-mi/">
                     <div class="card-image">
@@ -558,9 +549,55 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
                     <div class="summary">PyCryptodome包
 PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为PyCryptodome的库来代替PyCryto，下面简单介</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="card">
+                <a href="/2018/09/20/python-ji-chu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Python Basics">
+                        
+                        <span class="card-title">Python Basics</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+尽量用enumerate取代range：
+Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -578,52 +615,6 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
                     
                     <a href="/tags/Python/" target="_blank">
                         <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">下一篇</div>
-            <div class="card">
-                <a href="/2018/08/23/mysql-cun-chu-guo-cheng/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MySQL存储过程">
-                        
-                        <span class="card-title">MySQL存储过程</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">什么是存储过程
-存储过程是存储在数据库服务器中的一组SQL语句，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行 。
-存储过程可以用来封装特定功能，以便应用于不同的平台，可以看做对面向对象编程的模拟 
-</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/MySQL/" class="post-category" target="_blank">
-                                    MySQL
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/MySQL/" target="_blank">
-                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
