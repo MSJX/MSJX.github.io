@@ -374,26 +374,12 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
 <p>  def encrypt(content):<br>      data = content.encode(‘utf-8’)<br>      cipher = AES.new(key, AES.MODE_EAX)<br>      nonce = cipher.nonce<br>      cipher_text, tag = cipher.encrypt_and_digest(data)<br>      return cipher_text</p>
 <p>  print(encrypt(‘Test Python AES’))</p>
 <pre><code>
-  ```python
-  E:/company/1226/JsonRPC/en_decode/AES_crypto.py
-  b&#39;\x10e.\x0b\xcc\x1f\xdd\xb7\x1fE\x8a4M\xdc\xd5&#39;
 
-  Process finished with exit code 0
-</code></pre><ul>
-<li><p><strong>解密</strong></p>
-<p><code>`</code>python<br>from Crypto.Cipher import AES<br>from Crypto.Random import get_random_bytes</p>
-<p>key = get_random_bytes(16)</p>
-</li>
-</ul>
-<p>  def decrypt(self):<br>      cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)<br>      plaintext = (cipher.decrypt(cipher_text)).decode(‘utf-8’)<br>      try:<br>          cipher.verify(tag)<br>          return plaintext<br>      except:<br>          return “key incorrect or message corrupted”</p>
-<pre><code>
-  ```python
-  E:/company/1226/JsonRPC/en_decode/AES_crypto.py
-  Test Python AES
 
-  Process finished with exit code 0
-</code></pre><p>  解密过程中的key、nonce、tag必须与cipher_text在加密过程中生成的key、nonce、tag一致，否则会报错。</p>
-<p>未完……</p>
+  结果如下：
+
+</code></pre><p>  E:/company/1226/JsonRPC/en_decode/AES_crypto.py<br>  b’\x10e.\x0b\xcc\x1f\xdd\xb7\x1fE\x8a4M\xdc\xd5’</p>
+<p>  Process finished with exit code 0<br>  <code>`</code></p>
 
             </div>
             <hr>
