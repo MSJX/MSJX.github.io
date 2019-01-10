@@ -441,7 +441,7 @@ Process finished <span class="token keyword">with</span> exit code <span class="
 </code></pre>
 </li>
 </ul>
-<h3 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h3><p>​    <strong>RSA加密算法</strong>是一种<font color="red"><strong>非对称加密算法</strong></font>&gt;。在公开密钥加密和电子商业中RSA被广泛使用。</p>
+<h3 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h3><p>​    <strong>RSA加密算法</strong>是一种<font color="red"><strong>非对称加密算法</strong></font>。在公开密钥加密和电子商业中RSA被广泛使用。</p>
 <p>​    该算法基于一个十分简单的数论事实：将两个大素数相乘十分容易，但那时想要对其乘积进行因式分解却极其困难，因此可以将乘积公开作为加密密钥，即公钥，而两个大素数组合成私钥。公钥是可发布的供任何人使用，私钥则为自己所有，供解密之用</p>
 <ul>
 <li><p><strong>Linux安装</strong></p>
@@ -489,8 +489,8 @@ encrypted_key <span class="token operator">=</span> key<span class="token punctu
 <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'public_key.pem'</span><span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
     f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>key<span class="token punctuation">.</span>publickey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>exportKey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>首先我们从<strong><font color="red">Crypto.PublicKey</font></strong> 引入 <strong>RSA</strong>，然后创建一个密码。接下来我们生成一个2048位的<strong>RSA</strong>对象实例。我们需要调用 RSA 实例的 <strong>exportKey</strong> 方法并传递给它刚刚创建的密码，PKCS 标准算法将会用它保护我们的私钥。接下来我们将生成的私钥写入文件。</p>
-<p>下一步我们通过 RSA 实例的 <strong>publickey</strong> 方法生成公钥，我们在这段代码中用了简写的方式将 <strong>publickey</strong> 和 <strong>exportKey</strong> 方法串接起来，最后也将结果写入文件。</p>
+<p>首先我们从 <strong><font color="red">Crypto.PublicKey</font></strong> 引入 <strong>RSA</strong>，然后创建一个密码。接下来我们生成一个2048位的 <strong>RSA</strong> 对象实例。我们需要调用 <strong>RSA</strong> 实例的 <strong>exportKey</strong> 方法并传递给它刚刚创建的密码，<strong>PKCS</strong> 标准算法将会用它保护我们的私钥。接下来我们将生成的私钥写入文件。</p>
+<p>下一步我们通过 <strong>RSA</strong> 实例的 <strong>publickey</strong> 方法生成公钥，我们在这段代码中用了简写的方式将 <strong>publickey</strong> 和 <strong>exportKey</strong> 方法串接起来，最后也将结果写入文件。</p>
 </li>
 <li><p><strong>对文件进行加密</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>PublicKey <span class="token keyword">import</span> RSA
@@ -531,8 +531,8 @@ encrypted_key <span class="token operator">=</span> key<span class="token punctu
         private_key <span class="token operator">=</span> RSA<span class="token punctuation">.</span>import_key<span class="token punctuation">(</span>
             open<span class="token punctuation">(</span><span class="token string">'private.pem'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> passphrase<span class="token operator">=</span>secret_code<span class="token punctuation">)</span>
 
-        enc_session_key<span class="token punctuation">,</span> nonce<span class="token punctuation">,</span> tag<span class="token punctuation">,</span> cipher_text <span class="token operator">=</span> <span class="token punctuation">[</span>fp<span class="token punctuation">.</span>read<span class="token punctuation">(</span>x<span class="token punctuation">)</span> 
-                                                    <span class="token keyword">for</span> x <span class="token keyword">in</span>     <span class="token punctuation">(</span>private_key<span class="token punctuation">.</span>size_in_bytes<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        enc_session_key<span class="token punctuation">,</span> nonce<span class="token punctuation">,</span> tag<span class="token punctuation">,</span> cipher_text <span class="token operator">=</span> \
+            <span class="token punctuation">[</span>fp<span class="token punctuation">.</span>read<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token punctuation">(</span>private_key<span class="token punctuation">.</span>size_in_bytes<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
                                                               <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 
         cipher_rsa <span class="token operator">=</span> PKCS1_OAEP<span class="token punctuation">.</span>new<span class="token punctuation">(</span>private_key<span class="token punctuation">)</span>
@@ -544,6 +544,10 @@ encrypted_key <span class="token operator">=</span> key<span class="token punctu
 <p>在这个例子中，我们以二进制模式打开加密文件，然后导入私钥。要注意在导入私钥的时候，必须给出你的密码，即在生成<strong>RSA</strong>密钥时自己定义的<code>code = &#39;nooneknows&#39;</code>，否则将会出错。接下来我们读取加密文件，需要注意的是先读取私钥，然后是16位长的 <code>nonce</code>，接下来是另外 16 位长的标签，最后剩下的才是我们的数据。</p>
 <p>接下来我们需要解密 <strong>session key</strong>，重新生成 <strong>AES key</strong> 并解密数据。</p>
 </li>
+</ul>
+<h3 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h3><ul>
+<li><a href="https://juejin.im/entry/575fae92df0eea0062c5a1dc" target="_blank" rel="noopener">探索 Python 3 加密技术</a></li>
+<li><a href="https://pycryptodome.readthedocs.io/en/latest/src/examples.html#encrypt-data-with-aes" target="_blank" rel="noopener">PyCryptodome</a></li>
 </ul>
 
             </div>
