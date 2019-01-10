@@ -369,9 +369,9 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
 </code></pre>
 </li>
 </ul>
-<h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><ul>
-<li><p><strong>加密</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
+<h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><p>​    <strong>高级加密标准</strong>（英文：<strong>Advanced Encryption Standard</strong>，缩写：<strong>AES</strong>），在密码学中又称<strong>Rijndael加密法</strong>，是美国联邦政府采用的一种区块加密标准。</p>
+<ul>
+<li><h5 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
 <span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
 
 key <span class="token operator">=</span> get_random_bytes<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
@@ -393,8 +393,7 @@ Process finished <span class="token keyword">with</span> exit code <span class="
 </li>
 </ul>
 <ul>
-<li><p><strong>解密</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
+<li><h5 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
 <span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
 
 key <span class="token operator">=</span> get_random_bytes<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
@@ -415,8 +414,7 @@ Process finished <span class="token keyword">with</span> exit code <span class="
 </code></pre>
 <p>解密过程中的<strong>key、nonce、tag</strong>必须与<strong>cipher_text</strong>在加密过程中生成的<strong>key、nonce、tag</strong>一致，否则会报错。</p>
 </li>
-<li><p><strong>封装成一个类</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
+<li><h5 id="封装成一个类"><a href="#封装成一个类" class="headerlink" title="封装成一个类"></a>封装成一个类</h5><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
 <span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
 
 <span class="token keyword">class</span> <span class="token class-name">AESCrypto</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -443,6 +441,34 @@ Process finished <span class="token keyword">with</span> exit code <span class="
 </code></pre>
 </li>
 </ul>
+<h3 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h3><p>​    <strong>RSA加密算法</strong>是一种<font color="red"><strong>非对称加密算法</strong></font>&gt;。在公开密钥加密和电子商业中RSA被广泛使用。</p>
+<p>​    该算法基于一个十分简单的数论事实：将两个大素数相乘十分容易，但那时想要对其乘积进行因式分解却极其困难，因此可以将乘积公开作为加密密钥，即公钥，而两个大素数组合成私钥。公钥是可发布的供任何人使用，私钥则为自己所有，供解密之用</p>
+<ul>
+<li><p><strong>Linux安装</strong></p>
+<pre class=" language-python"><code class="language-python">pip install rsa
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p><code>`</code>python<br>import rsa</p>
+</li>
+</ul>
+<p>  def rsa_encrypted(msg):</p>
+<pre><code>  # 生成公钥、私钥
+  pub_key, priv_key = rsa.newkeys(1024)
+  # 明文编码格式
+  content = msg.encode(&#39;utf-8&#39;)
+  # 公钥加密
+  crypto = rsa.encrypt(content, pub_key)
+  return crypto, priv_key
+</code></pre><h1 id="加密-1"><a href="#加密-1" class="headerlink" title="加密"></a>加密</h1><p>  def rsa_decrypted(msg, priv_key):</p>
+<pre><code>  # 私钥解密
+  content = rsa.decrypt(msg, priv_key)
+  data = content.decode(&#39;utf-8&#39;)
+  return data
+</code></pre><p>  <code>`</code></p>
+<p>  如果单独使用<strong>RSA</strong>进行加密的话，加密的内容长度会受到<strong>公钥</strong>和<strong>私钥</strong>的<font color="red"><strong>bytes</strong></font>影响，所以，这个时候会就需要用到文章开头所说的，<strong>AES + RSA</strong>来进行加密。</p>
+<h3 id="AES-RSA"><a href="#AES-RSA" class="headerlink" title="AES + RSA"></a>AES + RSA</h3><p>未完……</p>
 
             </div>
             <hr>
