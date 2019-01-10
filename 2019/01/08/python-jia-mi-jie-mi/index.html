@@ -417,9 +417,10 @@ Process finished <span class="token keyword">with</span> exit code <span class="
 </li>
 <li><p><strong>封装成一个类</strong></p>
 <p><code>`</code>python<br>from Crypto.Cipher import AES<br>from Crypto.Random import get_random_bytes</p>
-</li>
+<p>class AESCrypto(object):</p>
+<pre><code>key = get_random_bytes(16)
+</code></pre></li>
 </ul>
-<p>  class AESCrypto(object):<br>      key = get_random_bytes(16)</p>
 <pre><code>  # 加密
   def encrypt(self, content):
       data = content.encode(&#39;utf-8&#39;)
