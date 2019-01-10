@@ -6,8 +6,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Python AES and RSA, MSJX">
-    <meta name="description" content="PyCryptodome包
-PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为PyCryptodome的库来代替PyCryto，下面简单介">
+    <meta name="description" content="PyCryptodome包​    PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为PyCryptodome的库来代替PyCryto，下">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -356,9 +355,7 @@ PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的�
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="PyCryptodome包"><a href="#PyCryptodome包" class="headerlink" title="PyCryptodome包"></a>PyCryptodome包</h3><ul>
-<li><font color="red"><strong>PyCryto</strong></font>应该是Python最著名的第三方库了，奈何<strong><font color="red">PyCryto</font></strong>在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为<strong><font color="red">PyCryptodome</font></strong>的库来代替<strong><font color="red">PyCryto</font></strong>，下面简单介绍一下<strong><font color="red">PyCryptodome</font></strong>这个库的用法，主要是AES结合RSA使用。</li>
-</ul>
+                <h3 id="PyCryptodome包"><a href="#PyCryptodome包" class="headerlink" title="PyCryptodome包"></a>PyCryptodome包</h3><p>​    <font color="red"><strong>PyCryto</strong></font>应该是Python最著名的第三方库了，奈何<strong><font color="red">PyCryto</font></strong>在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为<strong><font color="red">PyCryptodome</font></strong>的库来代替<strong><font color="red">PyCryto</font></strong>，下面简单介绍一下<strong><font color="red">PyCryptodome</font></strong>这个库的用法，主要是AES结合RSA使用。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
 <li><p><strong>Linux</strong></p>
 <pre class=" language-python"><code class="language-python">pip install pycryptodome
@@ -476,7 +473,73 @@ Process finished <span class="token keyword">with</span> exit code <span class="
 <p>如果单独使用<strong>RSA</strong>进行加密的话，加密的内容长度会受到<strong>公钥</strong>和<strong>私钥</strong>的<font color="red"><strong>bytes</strong></font>影响，所以，这个时候会就需要用到文章开头所说的，<strong>AES + RSA</strong>来进行加密。</p>
 </li>
 </ul>
-<h3 id="AES-RSA"><a href="#AES-RSA" class="headerlink" title="AES + RSA"></a>AES + RSA</h3><p>未完……</p>
+<h3 id="AES-RSA"><a href="#AES-RSA" class="headerlink" title="AES + RSA"></a>AES + RSA</h3><ul>
+<li><p><strong>生成一个RSA密钥</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>PublicKey <span class="token keyword">import</span> RSA
+
+code <span class="token operator">=</span> <span class="token string">'nooneknows'</span>
+key <span class="token operator">=</span> RSA<span class="token punctuation">.</span>generate<span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span>
+
+encrypted_key <span class="token operator">=</span> key<span class="token punctuation">.</span>exportKey<span class="token punctuation">(</span>passphrase<span class="token operator">=</span>code<span class="token punctuation">,</span> pkcs<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span>
+                              protection<span class="token operator">=</span><span class="token string">"scryptAndAES128-CBC"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'private_key.pem'</span><span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>encrypted_key<span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'public_key.pem'</span><span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>key<span class="token punctuation">.</span>publickey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>exportKey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>首先我们从<strong><font color="red">Crypto.PublicKey</font></strong> 引入 <strong>RSA</strong>，然后创建一个密码。接下来我们生成一个2048位的<strong>RSA</strong>对象实例。我们需要调用 RSA 实例的 <strong>exportKey</strong> 方法并传递给它刚刚创建的密码，PKCS 标准算法将会用它保护我们的私钥。接下来我们将生成的私钥写入文件。</p>
+<p>下一步我们通过 RSA 实例的 <strong>publickey</strong> 方法生成公钥，我们在这段代码中用了简写的方式将 <strong>publickey</strong> 和 <strong>exportKey</strong> 方法串接起来，最后也将结果写入文件。</p>
+</li>
+<li><p><strong>对文件进行加密</strong></p>
+<p><code>`</code>python<br>from Crypto.PublicKey import RSA<br>from Crypto.Random import get_random_bytes<br>from Crypto.Cipher import AES, PKCS1_OAEP</p>
+</li>
+</ul>
+<p>  def encrypt(content):<br>      with open(‘encrypted_data.bin’, ‘wb’) as out_file:<br>          recipient_key = RSA.import_key(<br>              open(‘public.pem’).read())<br>          session_key = get_random_bytes(16)</p>
+<pre><code>      cipher_rsa = PKCS1_OAEP.new(recipient_key)
+      out_file.write(cipher_rsa.encrypt(session_key))
+
+      cipher_aes = AES.new(session_key, AES.MODE_EAX)
+      data = content.encode(&#39;utf-8&#39;)
+      cipher_text, tag = cipher_aes.encrypt_and_digest(data)
+
+      out_file.write(cipher_aes.nonce)
+      out_file.write(tag)
+      out_file.write(cipher_text)
+
+  return cipher_text
+</code></pre><pre><code>
+  前三行完成对&lt;font color=&#39;red&#39;&gt;**PyCryptodome**&lt;/font&gt;的引入，接下来打开将要写入的文件。然后我们将公钥读入变量并创建一个16字节长的 **session key**。在这个例子中我们用了混合加密方法，因此我们使用最优非对称加密填充的 **PKCS#1 OAEP**。这让我们可以将任意长度的数据写入文件。接下来我们创建 **AES** 密文，创建一些数据并进行加密，这一方法会返回加密后的文本和 **MAC** 值。最终我们将 `nonce`，`MAC`(或`tag`)以及加密后的文本写入文件。
+
+  说明一下，`nonce` 是一个任意数字，仅用于密文通信。它们通常是随机或伪随机数。对于 **AES** 来说，它的长度至少要是16位。你可以用你的文本编辑器打开加密后的文件看一下，只能看到一堆乱码。
+
+- **对文件进行解密**
+
+  ```python
+  from Crypto.PublicKey import RSA
+  from Crypto.Random import get_random_bytes
+  from Crypto.Cipher import AES, PKCS1_OAEP
+
+
+  def decrypt():
+      secret_code = &#39;nooneknows&#39;
+
+      with open(&#39;encrypted_data.bin&#39;, &#39;rb&#39;) as fp:
+          private_key = RSA.import_key(
+              open(&#39;private.pem&#39;).read(), passphrase=secret_code)
+
+          enc_session_key, nonce, tag, cipher_text = [fp.read(x) 
+                                                      for x in             (private_key.size_in_bytes(), 
+                                                                16, 16, -1)]
+
+          cipher_rsa = PKCS1_OAEP.new(private_key)
+          cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
+          data = cipher_aes.decrypt_and_verify(cipher_text, tag)
+
+      return data.decode(&#39;utf-8&#39;)
+</code></pre><p>  在这个例子中，我们以二进制模式打开加密文件，然后导入私钥。要注意在导入私钥的时候，必须给出你的密码，即在生成<strong>RSA</strong>密钥时自己定义的<code>code = &#39;nooneknows&#39;</code>，否则将会出错。接下来我们读取加密文件，需要注意的是先读取私钥，然后是16位长的 <code>nonce</code>，接下来是另外 16 位长的标签，最后剩下的才是我们的数据。</p>
+<p>  接下来我们需要解密 <strong>session key</strong>，重新生成 <strong>AES key</strong> 并解密数据。</p>
 
             </div>
             <hr>
@@ -649,8 +712,7 @@ Process finished <span class="token keyword">with</span> exit code <span class="
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">PyCryptodome包
-PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为PyCryptodome的库来代替PyCryto，下面简单介</div>
+                    <div class="summary">PyCryptodome包​    PyCryto应该是Python最著名的第三方库了，奈何PyCryto在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为PyCryptodome的库来代替PyCryto，下</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
