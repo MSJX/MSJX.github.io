@@ -520,26 +520,31 @@ encrypted_key <span class="token operator">=</span> key<span class="token punctu
 <p>说明一下，<code>nonce</code> 是一个任意数字，仅用于密文通信。它们通常是随机或伪随机数。对于 <strong>AES</strong> 来说，它的长度至少要是16位。你可以用你的文本编辑器打开加密后的文件看一下，只能看到一堆乱码。</p>
 </li>
 <li><p><strong>对文件进行解密</strong></p>
-<p><code>`</code>python<br>from Crypto.PublicKey import RSA<br>from Crypto.Random import get_random_bytes<br>from Crypto.Cipher import AES, PKCS1_OAEP</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>PublicKey <span class="token keyword">import</span> RSA
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES<span class="token punctuation">,</span> PKCS1_OAEP
+
+<span class="token keyword">def</span> <span class="token function">decrypt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    secret_code <span class="token operator">=</span> <span class="token string">'nooneknows'</span>
+
+    <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'encrypted_data.bin'</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
+        private_key <span class="token operator">=</span> RSA<span class="token punctuation">.</span>import_key<span class="token punctuation">(</span>
+            open<span class="token punctuation">(</span><span class="token string">'private.pem'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> passphrase<span class="token operator">=</span>secret_code<span class="token punctuation">)</span>
+
+        enc_session_key<span class="token punctuation">,</span> nonce<span class="token punctuation">,</span> tag<span class="token punctuation">,</span> cipher_text <span class="token operator">=</span> <span class="token punctuation">[</span>fp<span class="token punctuation">.</span>read<span class="token punctuation">(</span>x<span class="token punctuation">)</span> 
+                                                    <span class="token keyword">for</span> x <span class="token keyword">in</span>             <span class="token punctuation">(</span>private_key<span class="token punctuation">.</span>size_in_bytes<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                                                              <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+        cipher_rsa <span class="token operator">=</span> PKCS1_OAEP<span class="token punctuation">.</span>new<span class="token punctuation">(</span>private_key<span class="token punctuation">)</span>
+        cipher_aes <span class="token operator">=</span> AES<span class="token punctuation">.</span>new<span class="token punctuation">(</span>session_key<span class="token punctuation">,</span> AES<span class="token punctuation">.</span>MODE_EAX<span class="token punctuation">,</span> nonce<span class="token punctuation">)</span>
+        data <span class="token operator">=</span> cipher_aes<span class="token punctuation">.</span>decrypt_and_verify<span class="token punctuation">(</span>cipher_text<span class="token punctuation">,</span> tag<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> data<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>在这个例子中，我们以二进制模式打开加密文件，然后导入私钥。要注意在导入私钥的时候，必须给出你的密码，即在生成<strong>RSA</strong>密钥时自己定义的<code>code = &#39;nooneknows&#39;</code>，否则将会出错。接下来我们读取加密文件，需要注意的是先读取私钥，然后是16位长的 <code>nonce</code>，接下来是另外 16 位长的标签，最后剩下的才是我们的数据。</p>
+<p>接下来我们需要解密 <strong>session key</strong>，重新生成 <strong>AES key</strong> 并解密数据。</p>
 </li>
 </ul>
-<p>  def decrypt():<br>      secret_code = ‘nooneknows’</p>
-<pre><code>  with open(&#39;encrypted_data.bin&#39;, &#39;rb&#39;) as fp:
-      private_key = RSA.import_key(
-          open(&#39;private.pem&#39;).read(), passphrase=secret_code)
-
-      enc_session_key, nonce, tag, cipher_text = [fp.read(x) 
-                                                  for x in             (private_key.size_in_bytes(), 
-                                                            16, 16, -1)]
-
-      cipher_rsa = PKCS1_OAEP.new(private_key)
-      cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
-      data = cipher_aes.decrypt_and_verify(cipher_text, tag)
-
-  return data.decode(&#39;utf-8&#39;)
-</code></pre><p>  <code>`</code></p>
-<p>  在这个例子中，我们以二进制模式打开加密文件，然后导入私钥。要注意在导入私钥的时候，必须给出你的密码，即在生成<strong>RSA</strong>密钥时自己定义的<code>code = &#39;nooneknows&#39;</code>，否则将会出错。接下来我们读取加密文件，需要注意的是先读取私钥，然后是16位长的 <code>nonce</code>，接下来是另外 16 位长的标签，最后剩下的才是我们的数据。</p>
-<p>  接下来我们需要解密 <strong>session key</strong>，重新生成 <strong>AES key</strong> 并解密数据。</p>
 
             </div>
             <hr>
