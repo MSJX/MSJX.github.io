@@ -422,6 +422,24 @@ Process finished <span class="token keyword">with</span> exit code <span class="
 <span class="token keyword">class</span> <span class="token class-name">AESCrypto</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     key <span class="token operator">=</span> get_random_bytes<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 加密</span>
+    <span class="token keyword">def</span> <span class="token function">encrypt</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        data <span class="token operator">=</span> content<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        cipher <span class="token operator">=</span> AES<span class="token punctuation">.</span>new<span class="token punctuation">(</span>self<span class="token punctuation">.</span>key<span class="token punctuation">,</span> AES<span class="token punctuation">.</span>MODE_EAX<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>nonce <span class="token operator">=</span> cipher<span class="token punctuation">.</span>nonce
+        self<span class="token punctuation">.</span>cipher_text<span class="token punctuation">,</span> self<span class="token punctuation">.</span>tag <span class="token operator">=</span> cipher<span class="token punctuation">.</span>encrypt_and_digest<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>cipher_text
+
+    <span class="token comment" spellcheck="true"># 解密</span>
+    <span class="token keyword">def</span> <span class="token function">decrypt</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        cipher <span class="token operator">=</span> AES<span class="token punctuation">.</span>new<span class="token punctuation">(</span>self<span class="token punctuation">.</span>key<span class="token punctuation">,</span> AES<span class="token punctuation">.</span>MODE_EAX<span class="token punctuation">,</span> nonce<span class="token operator">=</span>self<span class="token punctuation">.</span>nonce<span class="token punctuation">)</span>
+        plaintext <span class="token operator">=</span> <span class="token punctuation">(</span>cipher<span class="token punctuation">.</span>decrypt<span class="token punctuation">(</span>self<span class="token punctuation">.</span>cipher_text<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            cipher<span class="token punctuation">.</span>verify<span class="token punctuation">(</span>self<span class="token punctuation">.</span>tag<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> plaintext
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">"key incorrect or message corrupted"</span>
 </code></pre>
 </li>
 </ul>
