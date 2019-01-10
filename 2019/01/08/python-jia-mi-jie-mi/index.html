@@ -493,52 +493,52 @@ encrypted_key <span class="token operator">=</span> key<span class="token punctu
 <p>下一步我们通过 RSA 实例的 <strong>publickey</strong> 方法生成公钥，我们在这段代码中用了简写的方式将 <strong>publickey</strong> 和 <strong>exportKey</strong> 方法串接起来，最后也将结果写入文件。</p>
 </li>
 <li><p><strong>对文件进行加密</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>PublicKey <span class="token keyword">import</span> RSA
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Random <span class="token keyword">import</span> get_random_bytes
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES<span class="token punctuation">,</span> PKCS1_OAEP
+
+<span class="token keyword">def</span> <span class="token function">encrypt</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'encrypted_data.bin'</span><span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> out_file<span class="token punctuation">:</span>
+        recipient_key <span class="token operator">=</span> RSA<span class="token punctuation">.</span>import_key<span class="token punctuation">(</span>
+            open<span class="token punctuation">(</span><span class="token string">'public.pem'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        session_key <span class="token operator">=</span> get_random_bytes<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
+
+        cipher_rsa <span class="token operator">=</span> PKCS1_OAEP<span class="token punctuation">.</span>new<span class="token punctuation">(</span>recipient_key<span class="token punctuation">)</span>
+        out_file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>cipher_rsa<span class="token punctuation">.</span>encrypt<span class="token punctuation">(</span>session_key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        cipher_aes <span class="token operator">=</span> AES<span class="token punctuation">.</span>new<span class="token punctuation">(</span>session_key<span class="token punctuation">,</span> AES<span class="token punctuation">.</span>MODE_EAX<span class="token punctuation">)</span>
+        data <span class="token operator">=</span> content<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        cipher_text<span class="token punctuation">,</span> tag <span class="token operator">=</span> cipher_aes<span class="token punctuation">.</span>encrypt_and_digest<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+        out_file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>cipher_aes<span class="token punctuation">.</span>nonce<span class="token punctuation">)</span>
+        out_file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>tag<span class="token punctuation">)</span>
+        out_file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>cipher_text<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> cipher_text
+</code></pre>
+<p>前三行完成对<font color="red"><strong>PyCryptodome</strong></font>的引入，接下来打开将要写入的文件。然后我们将公钥读入变量并创建一个16字节长的 <strong>session key</strong>。在这个例子中我们用了混合加密方法，因此我们使用最优非对称加密填充的 <strong>PKCS#1 OAEP</strong>。这让我们可以将任意长度的数据写入文件。接下来我们创建 <strong>AES</strong> 密文，创建一些数据并进行加密，这一方法会返回加密后的文本和 <strong>MAC</strong> 值。最终我们将 <code>nonce</code>，<code>MAC</code>(或<code>tag</code>)以及加密后的文本写入文件。</p>
+<p>说明一下，<code>nonce</code> 是一个任意数字，仅用于密文通信。它们通常是随机或伪随机数。对于 <strong>AES</strong> 来说，它的长度至少要是16位。你可以用你的文本编辑器打开加密后的文件看一下，只能看到一堆乱码。</p>
+</li>
+<li><p><strong>对文件进行解密</strong></p>
 <p><code>`</code>python<br>from Crypto.PublicKey import RSA<br>from Crypto.Random import get_random_bytes<br>from Crypto.Cipher import AES, PKCS1_OAEP</p>
 </li>
 </ul>
-<p>  def encrypt(content):<br>      with open(‘encrypted_data.bin’, ‘wb’) as out_file:<br>          recipient_key = RSA.import_key(<br>              open(‘public.pem’).read())<br>          session_key = get_random_bytes(16)</p>
-<pre><code>      cipher_rsa = PKCS1_OAEP.new(recipient_key)
-      out_file.write(cipher_rsa.encrypt(session_key))
+<p>  def decrypt():<br>      secret_code = ‘nooneknows’</p>
+<pre><code>  with open(&#39;encrypted_data.bin&#39;, &#39;rb&#39;) as fp:
+      private_key = RSA.import_key(
+          open(&#39;private.pem&#39;).read(), passphrase=secret_code)
 
-      cipher_aes = AES.new(session_key, AES.MODE_EAX)
-      data = content.encode(&#39;utf-8&#39;)
-      cipher_text, tag = cipher_aes.encrypt_and_digest(data)
+      enc_session_key, nonce, tag, cipher_text = [fp.read(x) 
+                                                  for x in             (private_key.size_in_bytes(), 
+                                                            16, 16, -1)]
 
-      out_file.write(cipher_aes.nonce)
-      out_file.write(tag)
-      out_file.write(cipher_text)
+      cipher_rsa = PKCS1_OAEP.new(private_key)
+      cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
+      data = cipher_aes.decrypt_and_verify(cipher_text, tag)
 
-  return cipher_text
-</code></pre><pre><code>
-  前三行完成对&lt;font color=&#39;red&#39;&gt;**PyCryptodome**&lt;/font&gt;的引入，接下来打开将要写入的文件。然后我们将公钥读入变量并创建一个16字节长的 **session key**。在这个例子中我们用了混合加密方法，因此我们使用最优非对称加密填充的 **PKCS#1 OAEP**。这让我们可以将任意长度的数据写入文件。接下来我们创建 **AES** 密文，创建一些数据并进行加密，这一方法会返回加密后的文本和 **MAC** 值。最终我们将 `nonce`，`MAC`(或`tag`)以及加密后的文本写入文件。
-
-  说明一下，`nonce` 是一个任意数字，仅用于密文通信。它们通常是随机或伪随机数。对于 **AES** 来说，它的长度至少要是16位。你可以用你的文本编辑器打开加密后的文件看一下，只能看到一堆乱码。
-
-- **对文件进行解密**
-
-  ```python
-  from Crypto.PublicKey import RSA
-  from Crypto.Random import get_random_bytes
-  from Crypto.Cipher import AES, PKCS1_OAEP
-
-
-  def decrypt():
-      secret_code = &#39;nooneknows&#39;
-
-      with open(&#39;encrypted_data.bin&#39;, &#39;rb&#39;) as fp:
-          private_key = RSA.import_key(
-              open(&#39;private.pem&#39;).read(), passphrase=secret_code)
-
-          enc_session_key, nonce, tag, cipher_text = [fp.read(x) 
-                                                      for x in             (private_key.size_in_bytes(), 
-                                                                16, 16, -1)]
-
-          cipher_rsa = PKCS1_OAEP.new(private_key)
-          cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
-          data = cipher_aes.decrypt_and_verify(cipher_text, tag)
-
-      return data.decode(&#39;utf-8&#39;)
-</code></pre><p>  在这个例子中，我们以二进制模式打开加密文件，然后导入私钥。要注意在导入私钥的时候，必须给出你的密码，即在生成<strong>RSA</strong>密钥时自己定义的<code>code = &#39;nooneknows&#39;</code>，否则将会出错。接下来我们读取加密文件，需要注意的是先读取私钥，然后是16位长的 <code>nonce</code>，接下来是另外 16 位长的标签，最后剩下的才是我们的数据。</p>
+  return data.decode(&#39;utf-8&#39;)
+</code></pre><p>  <code>`</code></p>
+<p>  在这个例子中，我们以二进制模式打开加密文件，然后导入私钥。要注意在导入私钥的时候，必须给出你的密码，即在生成<strong>RSA</strong>密钥时自己定义的<code>code = &#39;nooneknows&#39;</code>，否则将会出错。接下来我们读取加密文件，需要注意的是先读取私钥，然后是16位长的 <code>nonce</code>，接下来是另外 16 位长的标签，最后剩下的才是我们的数据。</p>
 <p>  接下来我们需要解密 <strong>session key</strong>，重新生成 <strong>AES key</strong> 并解密数据。</p>
 
             </div>
