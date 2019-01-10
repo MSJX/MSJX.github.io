@@ -413,9 +413,31 @@ Test Python AES
 
 Process finished <span class="token keyword">with</span> exit code <span class="token number">0</span>
 </code></pre>
+<p>解密过程中的<strong>key、nonce、tag</strong>必须与<strong>cipher_text</strong>在加密过程中生成的<strong>key、nonce、tag</strong>一致，否则会报错。</p>
+</li>
+<li><p><strong>封装成一个类</strong></p>
+<p><code>`</code>python<br>from Crypto.Cipher import AES<br>from Crypto.Random import get_random_bytes</p>
 </li>
 </ul>
-<p>  解密过程中的<strong>key、nonce、tag</strong>必须与<strong>cipher_text</strong>在加密过程中生成的<strong>key、nonce、tag</strong>一致，否则会报错。</p>
+<p>  class AESCrypto(object):<br>      key = get_random_bytes(16)</p>
+<pre><code>  # 加密
+  def encrypt(self, content):
+      data = content.encode(&#39;utf-8&#39;)
+      cipher = AES.new(self.key, AES.MODE_EAX)
+      self.nonce = cipher.nonce
+      self.cipher_text, self.tag = cipher.encrypt_and_digest(data)
+      return self.cipher_text
+
+  # 解密
+  def decrypt(self):
+      cipher = AES.new(self.key, AES.MODE_EAX, nonce=self.nonce)
+      plaintext = (cipher.decrypt(self.cipher_text)).decode(&#39;utf-8&#39;)
+      try:
+          cipher.verify(self.tag)
+          return plaintext
+      except:
+          return &quot;key incorrect or message corrupted&quot;
+</code></pre><p>  <code>`</code></p>
 
             </div>
             <hr>
