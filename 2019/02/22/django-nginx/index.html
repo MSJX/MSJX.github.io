@@ -5,11 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL存储过程, MSJX">
-    <meta name="description" content="什么是存储过程
-存储过程是存储在数据库服务器中的一组SQL语句，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行 。
-存储过程可以用来封装特定功能，以便应用于不同的平台，可以看做对面向对象编程的模拟 
-">
+    <meta name="keywords" content="Django+Nginx post 500, MSJX">
+    <meta name="description" content="Django + Nginx  + uWsgi 的错误记录记录我出现server error 500的原因：模板中使用了filter，没有加到服务器代码上，因此模板在渲染的时候出现了如下错误：
+django.template.excepti">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MySQL存储过程 | MSJX</title>
+    <title>Django+Nginx post 500 | MSJX</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -211,13 +209,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        MySQL存储过程
+                        Django+Nginx post 500
                     </div>
                 </div>
             </div>
@@ -328,8 +326,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/MySQL/" target="_blank">
-                    <span class="chip bg-color">MySQL</span>
+                <a href="/tags/Python/" target="_blank">
+                    <span class="chip bg-color">Python</span>
                 </a>
                 
             </div>
@@ -339,240 +337,24 @@
                 <span class="post-cate">
                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                     
-                    <a href="/categories/MySQL/" class="post-category" target="_blank">
-                        MySQL
+                    <a href="/categories/Python/" class="post-category" target="_blank">
+                        Python
                     </a>
                     
                 </span>
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-08-23
+                    <i class="fa fa-clock-o fa-fw"></i>2019-02-22
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="什么是存储过程"><a href="#什么是存储过程" class="headerlink" title="什么是存储过程"></a>什么是存储过程</h3><ul>
-<li><p>存储过程是存储在数据库服务器中的一组SQL语句，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行 。</p>
-<p>存储过程可以用来封装特定功能，以便应用于不同的平台，可以看做对面向对象编程的模拟 </p>
-</li>
-</ul>
-<h3 id="存储过程的优点"><a href="#存储过程的优点" class="headerlink" title="存储过程的优点"></a>存储过程的优点</h3><ul>
-<li>存储过程只在创造时进行编译，以后每次执行存储过程都不需再重新编译，而一般 SQL 语句每执行一次就编译一次,所以使用存储过程可提高数据库执行速度。</li>
-<li>当对数据库进行复杂操作时(如对多个表进行 Update,Insert,Query,Delete 时），可将此复杂操作用存储过程封装起来与数据库提供的事务处理结合一起使用。这些操作，如果用程序来完成，就变成了一条条的 SQL 语句，可能要多次连接数据库。而换成存储，只需要连接一次数据库就可以了。 </li>
-<li>存储过程可以重复使用,可减少数据库开发人员的工作量。 </li>
-<li>安全性高,可设定只有某此用户才具有对指定存储过程的使用权。 </li>
-</ul>
-<h3 id="存储过程的缺点"><a href="#存储过程的缺点" class="headerlink" title="存储过程的缺点"></a>存储过程的缺点</h3><ul>
-<li>运行速度：对于很简单的SQL，存储过程没有什么优势。 </li>
-<li>网络负荷：如果在存储过程中没有进行多次的数据交互，那么实际上网络传输量和直接使用SQL是一样的 。</li>
-<li>开发调试：由于IDE的问题，存储过程的开发调试要比一般程序困难 。</li>
-</ul>
-<h3 id="创建MySQL存储过程"><a href="#创建MySQL存储过程" class="headerlink" title="创建MySQL存储过程"></a>创建MySQL存储过程</h3><ul>
-<li><p>语法：</p>
-<pre class=" language-mysql"><code class="language-mysql">delimiter //
-create procedure procedure_name(params)
-begin
-    procedure body
-end //
-delimiter;
-</code></pre>
-<p>（<strong>注：</strong>在Navicat Lite中，新建函数，可直接在过程体中写入要完成的功能，非常方便。）</p>
-</li>
-<li><p>调用：</p>
-<pre><code>call procedure_name(params)
-</code></pre></li>
-<li><p>分隔符：</p>
-<p>MySQL默认以”;”为分隔符，如果没有声明分隔符，则编译器会把存储过程当成SQL语句进行处理，因此编译过程会报错，所以要先用“DELIMITER //”声明当前段分隔符，让编译器把两个“//“之间的内容当做存储过程的代码，不会执行这些代码，“DELIMITER ;”意为把分隔符还原 。</p>
-</li>
-<li><p>参数：</p>
-<p>存储过程根据需要可能会有输入、输出、输入输出参数，如果有多个参数用“,”分隔开。MySQL存储过程的参数用在存储过程的定义，共有三种类型：in、out、inout。</p>
-<ul>
-<li><p>in：</p>
-<p>参数的值必须在调用存储过程前指定，在存储过程中修改该参数的值不能被返回</p>
-<p>即类似JAVA中的值传递，传递的相当于参数的值的拷贝，而不是参数本身。</p>
-</li>
-<li><p>out：</p>
-<p>该值可在存储过程内部被改变，并可返回，未在存储过程中赋值的话，则在存储过程中值为空</p>
-<p>即类似JAVA中的引用传递，传递的是该参数本身的地址，该参数在存储过程中被修改相当于直接修改该参数本身。</p>
-</li>
-<li><p>inout：</p>
-<p>具备IN、OUT的特性，在调用时指定，并可被改变和返回 。</p>
-</li>
-</ul>
-</li>
-<li><p>过程体（procedure body）：</p>
-<p>完成某种特定的功能（自己指定）,过程体的开始与结束使用<strong>BEGIN</strong>和<strong>END</strong>进行标识 。</p>
-</li>
-<li><p>in实例：</p>
-<pre class=" language-mysql"><code class="language-mysql">delimiter //
-create procedure pro_in(in p_in int)
-begin
-    select p_in;
-    set p_in = 1;
-    select p_in;
-end;
-//
-</code></pre>
-<pre><code>mysql&gt; drop procedure if exists in_param;
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&gt; delimiter //
-mysql&gt; create procedure in_param(in p_in int)
-    -&gt; begin
-    -&gt; select p_in;
-    -&gt; set p_in = 2;
-    -&gt; select p_in;
-    -&gt; end;
-    -&gt; //
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&gt; set @p_in=1;
-    -&gt; //
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&gt; call in_param(@p_in);
-    -&gt; //
-+------+
-| p_in |
-+------+
-|    1 |
-+------+
-1 row in set (0.00 sec)
-
-+------+
-| p_in |
-+------+
-|    2 |
-+------+
-1 row in set (0.03 sec)
-
-Query OK, 0 rows affected (0.06 sec)
-
-mysql&gt; select @p_in;
-    -&gt; //
-+-------+
-| @p_in |
-+-------+
-|     1 |
-+-------+
-1 row in set (0.00 sec)
-</code></pre><p>从运行结果可以得出，p_in虽然在存储过程中被修改了，但并不影响存储过程外的@p_in的值 。</p>
-</li>
-<li><p>out实例：</p>
-<pre><code>delimiter //
-create procedure pro_out(out p_out int)
-begin
-    select p_out;
-    set p_out = 2;
-    select p_out;
-end;
-//
-</code></pre><pre><code>mysql&gt; delimiter //
-mysql&gt; create procedure out_param(out p_out int)
-    -&gt; begin
-    -&gt; select p_out;
-    -&gt; set p_out = 2;
-    -&gt; select p_out;
-    -&gt; end;
-    -&gt; //
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&gt; delimiter ;
-mysql&gt; set @p_out = 1;
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&gt; call out_param(@p_out);
-+-------+
-| p_out |
-+-------+
-|  NULL |
-+-------+
-1 row in set (0.01 sec)
-
-+-------+
-| p_out |
-+-------+
-|     2 |
-+-------+
-1 row in set (0.03 sec)
-
-Query OK, 0 rows affected (0.06 sec)
-
-mysql&gt; select @p_out;
-+--------+
-| @p_out |
-+--------+
-|      2 |
-+--------+
-1 row in set (0.00 sec)
-</code></pre><p>从运行结果可以得出，p_out在存储过程中没被赋值的情况下是读取不到数据的，赋值后再存储过程外的@p_out的值也被修改了 。</p>
-</li>
-<li><p>inout实例：</p>
-<pre><code>mysql&gt; delimiter //
-mysql&gt; create procedure inout_param(inout p_inout int)
-    -&gt; begin
-    -&gt; select p_inout;
-    -&gt; set p_inout = 2;
-    -&gt; select p_inout;
-    -&gt; end;
-    -&gt; //
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&gt; set @p_inout = 1;
-    -&gt; //
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&gt; call inout_param(@p_inout);
-    -&gt; //
-+---------+
-| p_inout |
-+---------+
-|       1 |
-+---------+
-1 row in set (0.00 sec)
-
-+---------+
-| p_inout |
-+---------+
-|       2 |
-+---------+
-1 row in set (0.03 sec)
-
-Query OK, 0 rows affected (0.06 sec)
-
-mysql&gt; select @p_inout;
-    -&gt; //
-+----------+
-| @p_inout |
-+----------+
-|        2 |
-+----------+
-1 row in set (0.00 sec)
-</code></pre><p>从运行结果可以得出，inout参数结合了in和out的特点，传进去的参数既可以读取又可以修改 。</p>
-</li>
-<li><p>删除存储过程：</p>
-<ul>
-<li><p>语法：</p>
-<pre><code>drop procedure procedure_name;
-</code></pre></li>
-<li><p>example:</p>
-<pre><code>mysql&gt; drop procedure in_param;
-    -&gt; //
-Query OK, 0 rows affected (0.00 sec)
-</code></pre></li>
-</ul>
-</li>
-<li><p>存储过程实现模糊查询（Navicat Lite为例）：</p>
-<pre class=" language-mysql"><code class="language-mysql">create procedure pro_fruits_search_sort(in name varchar(20)):
-begin
-select fname,fprice,fcount,fprice*fcount as total from fruits_table where fname like concat('%',name,'%'); 
-end
-</code></pre>
-</li>
-</ul>
+                <h3 id="Django-Nginx-uWsgi-的错误记录"><a href="#Django-Nginx-uWsgi-的错误记录" class="headerlink" title="Django + Nginx  + uWsgi 的错误记录"></a>Django + Nginx  + uWsgi 的错误记录</h3><p>记录我出现server error 500的原因：模板中使用了filter，没有加到服务器代码上，因此模板在渲染的时候出现了如下错误：</p>
+<pre><code>django.template.exceptions.TemplateSyntaxError: Invalid filter
+</code></pre><p>但是在查看uWsgi.log的日志文件并没有log信息，</p>
 
             </div>
             <hr>
@@ -711,7 +493,7 @@ end
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://msjx.site" class="b-link-green">MSJX</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/08/23/mysql-cun-chu-guo-cheng/" class="b-link-green">MySQL存储过程</a>
+                    <a href="/2019/02/22/django-nginx/" class="b-link-green">Django+Nginx post 500</a>
                 </p>
             </div>
         </div>
@@ -733,25 +515,72 @@ end
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
-                <a href="/2018/09/20/python-ji-chu/">
+                <a href="/2019/02/22/django-nginx/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Python Basics">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Django+Nginx post 500">
                         
-                        <span class="card-title">Python Basics</span>
+                        <span class="card-title">Django+Nginx post 500</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-尽量用enumerate取代range：
-Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。</div>
+                    <div class="summary">Django + Nginx  + uWsgi 的错误记录记录我出现server error 500的原因：模板中使用了filter，没有加到服务器代码上，因此模板在渲染的时候出现了如下错误：
+django.template.excepti</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="card">
+                <a href="/2019/01/26/djangodeploy/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Ubuntu 16.04 Django部署（Nginx + uWsgi + Supervisor）">
+                        
+                        <span class="card-title">Ubuntu 16.04 Django部署（Nginx + uWsgi + Supervisor）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Ubuntu 16.04 Python3环境安装
+安装可能使用到的依赖
+apt get install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel
+
+从Py</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -771,55 +600,20 @@ Python提供了一个内置函数enumerate，可以把各种迭代器包装成�
                         <span class="chip bg-color">Python</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">下一篇</div>
-            <div class="card">
-                <a href="/2018/08/07/advices/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="EffectivePython Advices Record">
-                        
-                        <span class="card-title">EffectivePython Advices Record</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">不要通过检测长度的方法来判断somelist是否为空不要使用如：if len(somelist) &gt; 0来判断somelist是否为[]或“空值”，而是应该采用if not somelist这种写法来判断，somelist为空值或者N</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-07
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Python/" class="post-category" target="_blank">
-                                    Python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/EffectivePython/" target="_blank">
-                        <span class="chip bg-color">EffectivePython</span>
+                    <a href="/tags/Django/" target="_blank">
+                        <span class="chip bg-color">Django</span>
                     </a>
                     
-                    <a href="/tags/Advices/" target="_blank">
-                        <span class="chip bg-color">Advices</span>
+                    <a href="/tags/Nginx/" target="_blank">
+                        <span class="chip bg-color">Nginx</span>
                     </a>
                     
-                    <a href="/tags/ReadingNotes/" target="_blank">
-                        <span class="chip bg-color">ReadingNotes</span>
+                    <a href="/tags/uWsgi/" target="_blank">
+                        <span class="chip bg-color">uWsgi</span>
+                    </a>
+                    
+                    <a href="/tags/Supervisor/" target="_blank">
+                        <span class="chip bg-color">Supervisor</span>
                     </a>
                     
                 </div>
