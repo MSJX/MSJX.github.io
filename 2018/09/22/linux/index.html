@@ -5,9 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Django+Nginx post 500, MSJX">
-    <meta name="description" content="Django + Nginx  + uWsgi 的错误记录记录我出现server error 500的原因：模板中使用了filter，没有加到服务器代码上，因此模板在渲染的时候出现了如下错误：
-django.template.excepti">
+    <meta name="keywords" content="Linux Command, MSJX">
+    <meta name="description" content="1.ls命令就是list的缩写，通过ls命令不仅可以查看Linux文件夹包含的文件，而且可以查看文件权限（包含目录、文件夹、文件权限），查看目录信息等。
+ls -a 列出目录所有文件，包含以.开头的隐藏文件
+ls -A 列出除.及..的其它">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +16,7 @@ django.template.excepti">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Django+Nginx post 500 | MSJX</title>
+    <title>Linux Command | MSJX</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -209,13 +210,13 @@ django.template.excepti">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Django+Nginx post 500
+                        Linux Command
                     </div>
                 </div>
             </div>
@@ -326,8 +327,8 @@ django.template.excepti">
             
             <div class="article-tag">
                 
-                <a href="/tags/Python/" target="_blank">
-                    <span class="chip bg-color">Python</span>
+                <a href="/tags/Linux/" target="_blank">
+                    <span class="chip bg-color">Linux</span>
                 </a>
                 
             </div>
@@ -337,24 +338,258 @@ django.template.excepti">
                 <span class="post-cate">
                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                     
-                    <a href="/categories/Python/" class="post-category" target="_blank">
-                        Python
+                    <a href="/categories/Linux/" class="post-category" target="_blank">
+                        Linux
                     </a>
                     
                 </span>
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2019-02-22
+                    <i class="fa fa-clock-o fa-fw"></i>2018-09-22
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Django-Nginx-uWsgi-的错误记录"><a href="#Django-Nginx-uWsgi-的错误记录" class="headerlink" title="Django + Nginx  + uWsgi 的错误记录"></a>Django + Nginx  + uWsgi 的错误记录</h3><p>记录我出现server error 500的原因：模板中使用了filter，没有加到服务器代码上，因此模板在渲染的时候出现了如下错误：</p>
-<pre><code>django.template.exceptions.TemplateSyntaxError: Invalid filter
-</code></pre><p>但是在查看uWsgi.log的日志文件并没有log信息，</p>
+                <h3 id="1-ls命令"><a href="#1-ls命令" class="headerlink" title="1.ls命令"></a>1.ls命令</h3><p><strong>就是list的缩写，通过ls命令不仅可以查看Linux文件夹包含的文件，而且可以查看文件权限（包含目录、文件夹、文件权限），查看目录信息等。</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">ls -a 列出目录所有文件，包含以.开头的隐藏文件
+ls -A 列出除.及..的其它文件
+ls -r 反序排列
+ls -t 以文件修改时间排序
+ls -S 以文件大小排序
+ls -h 以易读大小显示
+ls -l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来
+
+实例：
+ls -lhrt 按易读方式按时间反序排序，并显示文件详细信息
+ls -lrS  按大小反序排序并显示文件信息
+ls -l n* 列出当前目录中所有以“t”开头目录的详细内容
+ls | sed "s:^:`pwd`/:" 列出文件绝对路径（不包含隐藏文件）
+find $pwd -maxdepth 1 | xargs ls -ld 列出文件绝对路径（包含隐藏文件）
+</code></pre>
+<h3 id="2-cd命令"><a href="#2-cd命令" class="headerlink" title="2.cd命令"></a>2.cd命令</h3><p><strong>（changeDirectory），切换当前目录至dirName</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">命令语法：cd [目录名]
+
+实例
+cd /  进去要目录
+cd ~  进入家目录
+cd -  返回上一次工作路径
+cd !$ 把上一个命令的参数作为cd参数使用
+cd .. 返回上一层路径
+</code></pre>
+<h3 id="3-pwd命令"><a href="#3-pwd命令" class="headerlink" title="3.pwd命令"></a>3.pwd命令</h3><p><strong>查看当前工作目录路径</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">实例
+pwd    查看当前路径
+pwd -p 查看软链接的实际路径
+</code></pre>
+<h3 id="4-mkdir命令"><a href="#4-mkdir命令" class="headerlink" title="4.mkdir命令"></a>4.mkdir命令</h3><p><strong>创建文件夹</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">可用选项：
+-m 对新建目录设置存储权限，也可以用chomd命令设置；
+-p 可以是一个路径名称。此时若路径中的某些目录尚不存在，加上此选项后，系统将自动建立好那些尚不在的目录，即一次可以建立多个目录；
+
+实例
+mkdir t 在当前工作目录下创建名为t的文件夹
+mkdir -p /tmp/test/t 在tmp目录下创建路径为/test/t的目录，若不存在则创建
+</code></pre>
+<h3 id="5-rm命令"><a href="#5-rm命令" class="headerlink" title="5.rm命令"></a>5.rm命令</h3><p><strong>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用rm来删除文件，通常仍然可以将该文件恢复原状</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">命令语法：rm [选项] 文件
+
+实例：
+rm -i *.log 删除任何.log文件；删除前逐一询问确认
+rm -tf test 删除test子目录及子目录中所有的档案，并且不用一一确认
+rm -- -f*   删除以-f开头的文件
+</code></pre>
+<h3 id="6-rmdir"><a href="#6-rmdir" class="headerlink" title="6.rmdir"></a>6.rmdir</h3><p><strong>从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对其父目录的写权限。</strong></p>
+<p><strong>（注：不能删除非空目录）</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">实例：
+rmdir -p parent/child/child2 当parent子目录被删除后成为空目录的话，则顺便一并删除
+</code></pre>
+<h3 id="7-mv命令"><a href="#7-mv命令" class="headerlink" title="7.mv命令"></a>7.mv命令</h3><p><strong>移动文件或修改文件名，根据第二参数类型决定（如目录，则移动文件；如为文件则重命名该文件）。</strong></p>
+<p><strong>当第二个参数为目录时，可将多个文件以空格分隔作为第一参数，移动多个文件到参数2指定的目录中。</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">实例：
+mv test.log test1.txt 将文件test.log重命名为test1.txt
+mv log1.txt log2.txt log3.txt /test3 将log1.txt，log2.txt，log3.txt移动到test3目录中
+mv -i log1.txt log2.txt 将文件file1改名为file2，如果file2已经存在，则询问是否覆盖
+mv * ../ 移动当前文件夹下的所有文件到上一级目录
+</code></pre>
+<h3 id="8-cp命令"><a href="#8-cp命令" class="headerlink" title="8.cp命令"></a>8.cp命令</h3><p><strong>将源文件复制至目标文件，或将多个源文件复制至目标目录。</strong></p>
+<p><strong>（注：命令行复制，如果目标文件已经存在会提示是否覆盖，而在shell脚本中，如果不加-i参数，则不会提示，而是直接覆盖！）</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">-i 提示
+-r 复制目录及目录内所有项目
+-a 复制的文件与原文件时间一样
+
+实例：
+cp -ai a.txt test      复制a.txt到test目录下，保持原文件时间,如果原文件存在提示是否覆盖
+cp -s a.txt link_a.txt 为a.txt建立一个链接（快捷方式）
+</code></pre>
+<h3 id="9-cat命令"><a href="#9-cat命令" class="headerlink" title="9.cat命令"></a>9.cat命令</h3><pre class=" language-cmd"><code class="language-cmd">cat filename 一次显示整个文件
+cat > filename 从键盘创建一个文件,只能创建新文件,不能编辑已有文件.
+cat file1 file2 > file 将几个文件合并为一个文件
+-b 对非空输出行号
+-n 输出所有行号
+
+实例：
+cat -n log1.log log2.log 把log1.log的文件内容加上行号n后输入log2.log这个文件里
+cat -b log1.log log2.log log3.log 把log1.log和log2.log的文件内容加上行号（空白行不加）之后将内容附加到log.log里
+ cat >log.txt <<eof 使用here="" doc生成新文件="" <="" code=""></eof></code></pre>
+<h3 id="10-more命令"><a href="#10-more命令" class="headerlink" title="10.more命令"></a>10.more命令</h3><p><strong>功能类似于cat, more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">->>命令参数：
++n 从笫n行开始显示
+-n 定义屏幕大小为n行
++/pattern 在每个档案显示前搜寻该字符（pattern），然后从该字符串前两行之后开始显示
+-c 从顶部清屏，然后显示
+-d 提示“Press space to continue，’q’ to quit（按空格键继续，按q键退出）”，禁用响铃功能
+-l (L)忽略Ctrl+l（换页）字符
+-p 通过清除窗口而不是滚屏来对文件进行换页，与-c选项相似
+-s 把连续的空行显示为一行
+-u 把文件内容中的下划线去掉
+
+->>常用操作命令：
+Enter 向下n行，需要定义，默认为1行
+Ctrl+F 向下滚动一屏
+空格键 向下滚动一屏
+Ctrl+B 返回上一屏
+=  输出当前行的行号
+:f 输出文件名和当前行的行号
+V 调用vi编辑器
+! 调用shell，并执行命令
+q 退出more
+
+实例：
+more +3 text.txt 显示从第3行起的内容
+ls -l |more -5   列出文件目录详细信息，借助管道每次显示5行，按空格显示下5行
+</code></pre>
+<h3 id="11-less命令"><a href="#11-less命令" class="headerlink" title="11.less命令"></a>11.less命令</h3><p><strong>less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">->>常用命令参数：
+-i 忽略搜索时的大小写
+-N 显示每行的行号
+-o <文件名> 将less输出的内容在指定的文件中保存起来
+-s 显示连续空行为一行
+/字符串: 向下搜索"字符串"的功能
+?字符串: 向上搜索"字符串"的功能
+n: 重复前一个搜索（与/或?有关）
+N: 反向重复前一个搜索（与/或?有关）
+-x <数字> 将"tab"键显示为规定的数字空格
+b 向后翻一页
+d 向后翻半页
+h 显示帮助界面
+Q 退出less命令
+u 向前滚动半页
+y 向前滚动一行
+空格键 滚动一行
+回车键 滚动一页
+[pagedown]: 向下翻动一页
+[pageup]: 向上翻动一页
+
+实例：
+ps -aux |less -N ps查看进程信息并通过less分页
+less 1.log 2.log 查看多个文件，可以使用n查看下一个，使用p查看前一个
+</数字></文件名></code></pre>
+<h3 id="12-head命令"><a href="#12-head命令" class="headerlink" title="12.head命令"></a>12.head命令</h3><p><strong>head命令用于显示文件文字区块。</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">格式：head [参数][文件]
+-q        隐藏文件名
+-v        显示文件名
+-c <字节>  显示字节数
+-n <行数>  显示的行数（行数为负数表示从后向前数）
+
+实例：
+head -n 5 head.txt 显示前5行
+head -c 5 head.txt 显示前5个字节
+</行数></字节></code></pre>
+<h3 id="13-tail命令"><a href="#13-tail命令" class="headerlink" title="13.tail命令"></a>13.tail命令</h3><p><strong>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">->>常用参数：
+-f 循环读取（常用于查看递增的日志文件）
+-n <行数> 显示行数（从后向前）
+
+实例：
+tail -f filename 监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10）
+tail -r -n 20 filename 逆序显示filename最后10行
+</行数></code></pre>
+<h3 id="14-which命令"><a href="#14-which命令" class="headerlink" title="14.which命令"></a>14.which命令</h3><p><strong>在PATH变量指定的路径中搜索某个系统命令的位置并且返回第一个搜索结果。</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">-n 指定文件名长度指定的长度必须大于或等于所有文件中最长的文件名。
+-p 与-n参数相同但此处的包括了文件的路径。
+-a 将PATH目录中可以找到指令均列出不止第一个而已。
+-w 指定输出时栏位的宽度。
+-V 显示版本信息
+
+实例：
+which ls   查看ls命令是否存在
+which bash 查看指令"bash"的绝对路径
+which cd   （显示不存在，因为cd是内建命令，而which查找显示的是PATH中的命令）
+</code></pre>
+<h3 id="15-whereis命令"><a href="#15-whereis命令" class="headerlink" title="15.whereis命令"></a>15.whereis命令</h3><p><strong>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。whereis及locate都是基于系统内建的数据库进行搜索，因此效率很高，而find则是遍历硬盘查找文件。</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">->>常用参数：
+-b 定位可执行文件
+-m 定位帮助文件
+-s 定位源代码文件
+-u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件。
+
+实例：
+whereis locate    查找localte程序相关文件
+whereis -s locate 查找locate的源码文件
+whereis -m locate 查找locate的帮助文件
+</code></pre>
+<h3 id="16-locate命令"><a href="#16-locate命令" class="headerlink" title="16.locate命令"></a>16.locate命令</h3><p><strong>locate通过搜寻系统内建文档数据库快速找到档案，数据库由updatedb程序来更新，updatedb是由cron daemon周期性调用的。 locate与find命令相似，可以使用如*、?等进行正则匹配查找</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">->>常用参数：
+-l num (要显示的行数)
+-f 将特定的档案系统排除在外，如将proc排除在外
+-r 使用正则运算式做为寻找条件
+
+实例：
+locate pwd 查找和pwd相关的所有文件（文件名包含pwd）
+locate /etc/sh 搜索etc目录下所有以sh开头的文件
+locate -r '^/var.*reason$' （其中.表示一个字符，*表示任务多个；.*表示任意多个字符）查找/var目录下，以reason结尾的文件
+</code></pre>
+<h3 id="17-find命令"><a href="#17-find命令" class="headerlink" title="17.find命令"></a>17.find命令</h3><p><strong>用于在文件树中查找文件，并作出相应的处理</strong></p>
+<pre class=" language-cmd"><code class="language-cmd">命令格式: find pathname -options [-print -exec -ok ...]
+
+
+find ./ -type f 查找文件
+find ./ -type d 查找目录
+find ./ -name test 查找名字为test的文件或目录
+find ./ -regex .*so.*\.gz 查找名字符合正则表达式的文件,注意前面的‘.*’(查找到的文件带有目录)
+find ./ -type d -print -exec ls {} \; 查找目录并列出目录下的文件(为找到的每一个目录单独执行ls命令，没有选项-print时文件列表前一行不会显示目录名称)
+find ./ -type d -ok ls {} \; 查找目录并列出目录下的文件(为找到的每一个目录单独执行ls命令,执行命令前需要确认)
+find ./ -type d -exec ls {} + 查找目录并列出目录下的文件(将找到的目录添加到ls命令后一次执行，参数过长时会分多次执行) 
+find ./ -name \*.c 查找文件名匹配*.c的文件
+find ./ -name test -print -exec cat {} \; 打印test文件名后，打印test文件的内容
+find ./ -name test -exec cat {} \; 不打印test文件名，只打印test文件的内容
+find ./ -mtime -2   查找文件更新日时在距现在时刻二天以内的文件
+find ./ -mtime +2   查找文件更新日时在距现在时刻二天以上的文件
+find ./ -mtime 2    查找文件更新日时在距现在时刻一天以上二天以内的文件
+find ./ -mmin -2    查找文件更新日时在距现在时刻二分以内的文件
+find ./ -mmin +2    查找文件更新日时在距现在时刻二分以上的文件
+find ./ -mmin 2     查找文件更新日时在距现在时刻一分以上二分以内的文件
+find ./ -newer abc  查找文件更新时间比文件abc的内容更新时间新的文件
+find ./ -anewer abc 查找文件访问时间比文件abc的内容更新时间新的文件
+find ./ -empty      查找空文件或空目录
+find ./ -empty -type f -print -delete 查找空文件并删除
+find ./ -perm 664   查找权限为644的文件或目录(需完全符合)
+find ./ -perm -664  查找用户/组权限为读写，其他用户权限为读(其他权限不限)的文件或目录
+
+查找用户有写权限或者组用户有写权限的文件或目录
+find ./ -perm /220
+find ./ -perm /u+w,g+w
+find ./ -perm /u=w,g=w
+
+find ./ -perm -u=r 查找所有者权限有读权限的目录或文件
+find ./ -perm -g=r 查找用户组权限有读权限的目录或文件
+find ./ -perm -o=r 查找其它用户权限有读权限的目录或文件
+find ./ -user lzj  查找所有者为lzj的文件或目录
+find ./ -group gname 查找组名为gname的文件或目录
+find ./ -nouser 查找文件的用户ID不存在的文件
+find ./ -nogroup 查找文件的组ID不存在的文件
+find ./ -executable \! -readable 查找有执行权限但没有可读权限的文件
+find ./ -size -10c 查找文件size小于10个字节的文件或目录
+find ./ -size 10c  查找文件size等于10个字节的文件或目录
+find ./ -size +10c 查找文件size大于10个字节的文件或目录
+find ./ -size -10k 查找文件size小于10k的文件或目录
+find ./ -size -10M 查找文件size小于10M的文件或目录
+find ./ -size -10G 查找文件size小于10G的文件或目录
+</code></pre>
+<p><a href="https://www.cnblogs.com/gaojun/p/3359355.html" target="_blank" rel="noopener">本文参考</a></p>
 
             </div>
             <hr>
@@ -493,7 +728,7 @@ django.template.excepti">
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://msjx.site" class="b-link-green">MSJX</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/02/22/django-nginx/" class="b-link-green">Django+Nginx post 500</a>
+                    <a href="/2018/09/22/linux/" class="b-link-green">Linux Command</a>
                 </p>
             </div>
         </div>
@@ -515,24 +750,22 @@ django.template.excepti">
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">本篇</div>
+            <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2019/02/22/django-nginx/">
+                <a href="/2019/01/08/python-jia-mi-jie-mi/">
                     <div class="card-image">
                         
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Python AES and RSA">
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Django+Nginx post 500">
-                        
-                        <span class="card-title">Django+Nginx post 500</span>
+                        <span class="card-title">Python AES and RSA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Django + Nginx  + uWsgi 的错误记录记录我出现server error 500的原因：模板中使用了filter，没有加到服务器代码上，因此模板在渲染的时候出现了如下错误：
-django.template.excepti</div>
+                    <div class="summary">PyCryptodome包​    PyCryto应该是Python最著名的第三方库了，奈何 PyCryto 在2012年的时候就停止更新了。值得庆幸的是，在Python 3.x上有了一个名为 PyCryptodome 的库来代替PyCry</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -545,12 +778,15 @@ django.template.excepti</div>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/Python/" target="_blank">
                         <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/加密/" target="_blank">
+                        <span class="chip bg-color">加密</span>
                     </a>
                     
                 </div>
@@ -562,23 +798,22 @@ django.template.excepti</div>
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2019/01/26/djangodeploy/">
+                <a href="/2018/09/20/python-ji-chu/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Ubuntu 16.04 Django部署（Nginx + uWsgi + Supervisor）">
                         
-                        <span class="card-title">Ubuntu 16.04 Django部署（Nginx + uWsgi + Supervisor）</span>
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Python Basics">
+                        
+                        <span class="card-title">Python Basics</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Ubuntu 16.04 Python3环境安装
-安装可能使用到的依赖
-apt get install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel
-
-从Py</div>
+                    <div class="summary">
+尽量用enumerate取代range：
+Python提供了一个内置函数enumerate，可以把各种迭代器包装成为一个生成器，生成器每次产生一对输出值，前者表示循环下标，后者表示从迭代器获取到的下一个序列元素。这样写出来的代码非常简洁。</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
                             </span>
                         <span class="publish-author">
                             
@@ -597,18 +832,6 @@ apt get install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel
                     
                     <a href="/tags/Python/" target="_blank">
                         <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/Django/" target="_blank">
-                        <span class="chip bg-color">Django</span>
-                    </a>
-                    
-                    <a href="/tags/Nginx/" target="_blank">
-                        <span class="chip bg-color">Nginx</span>
-                    </a>
-                    
-                    <a href="/tags/uWsgi/" target="_blank">
-                        <span class="chip bg-color">uWsgi</span>
                     </a>
                     
                 </div>

@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>Django+Nginx post 500</title>
-      <link href="/2019/02/22/django-nginx/"/>
-      <url>/2019/02/22/django-nginx/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Django-Nginx-uWsgi-的错误记录"><a href="#Django-Nginx-uWsgi-的错误记录" class="headerlink" title="Django + Nginx  + uWsgi 的错误记录"></a>Django + Nginx  + uWsgi 的错误记录</h3><p>记录我出现server error 500的原因：模板中使用了filter，没有加到服务器代码上，因此模板在渲染的时候出现了如下错误：</p><pre><code>django.template.exceptions.TemplateSyntaxError: Invalid filter</code></pre><p>但是在查看uWsgi.log的日志文件并没有log信息，</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Ubuntu 16.04 Django部署（Nginx + uWsgi + Supervisor）</title>
       <link href="/2019/01/26/djangodeploy/"/>
       <url>/2019/01/26/djangodeploy/</url>
@@ -79,6 +54,31 @@
             <tag> Python </tag>
             
             <tag> 加密 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux Command</title>
+      <link href="/2018/09/22/linux/"/>
+      <url>/2018/09/22/linux/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-ls命令"><a href="#1-ls命令" class="headerlink" title="1.ls命令"></a>1.ls命令</h3><p><strong>就是list的缩写，通过ls命令不仅可以查看Linux文件夹包含的文件，而且可以查看文件权限（包含目录、文件夹、文件权限），查看目录信息等。</strong></p><pre class=" language-cmd"><code class="language-cmd">ls -a 列出目录所有文件，包含以.开头的隐藏文件ls -A 列出除.及..的其它文件ls -r 反序排列ls -t 以文件修改时间排序ls -S 以文件大小排序ls -h 以易读大小显示ls -l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来实例：ls -lhrt 按易读方式按时间反序排序，并显示文件详细信息ls -lrS  按大小反序排序并显示文件信息ls -l n* 列出当前目录中所有以“t”开头目录的详细内容ls | sed "s:^:`pwd`/:" 列出文件绝对路径（不包含隐藏文件）find $pwd -maxdepth 1 | xargs ls -ld 列出文件绝对路径（包含隐藏文件）</code></pre><h3 id="2-cd命令"><a href="#2-cd命令" class="headerlink" title="2.cd命令"></a>2.cd命令</h3><p><strong>（changeDirectory），切换当前目录至dirName</strong></p><pre class=" language-cmd"><code class="language-cmd">命令语法：cd [目录名]实例cd /  进去要目录cd ~  进入家目录cd -  返回上一次工作路径cd !$ 把上一个命令的参数作为cd参数使用cd .. 返回上一层路径</code></pre><h3 id="3-pwd命令"><a href="#3-pwd命令" class="headerlink" title="3.pwd命令"></a>3.pwd命令</h3><p><strong>查看当前工作目录路径</strong></p><pre class=" language-cmd"><code class="language-cmd">实例pwd    查看当前路径pwd -p 查看软链接的实际路径</code></pre><h3 id="4-mkdir命令"><a href="#4-mkdir命令" class="headerlink" title="4.mkdir命令"></a>4.mkdir命令</h3><p><strong>创建文件夹</strong></p><pre class=" language-cmd"><code class="language-cmd">可用选项：-m 对新建目录设置存储权限，也可以用chomd命令设置；-p 可以是一个路径名称。此时若路径中的某些目录尚不存在，加上此选项后，系统将自动建立好那些尚不在的目录，即一次可以建立多个目录；实例mkdir t 在当前工作目录下创建名为t的文件夹mkdir -p /tmp/test/t 在tmp目录下创建路径为/test/t的目录，若不存在则创建</code></pre><h3 id="5-rm命令"><a href="#5-rm命令" class="headerlink" title="5.rm命令"></a>5.rm命令</h3><p><strong>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用rm来删除文件，通常仍然可以将该文件恢复原状</strong></p><pre class=" language-cmd"><code class="language-cmd">命令语法：rm [选项] 文件实例：rm -i *.log 删除任何.log文件；删除前逐一询问确认rm -tf test 删除test子目录及子目录中所有的档案，并且不用一一确认rm -- -f*   删除以-f开头的文件</code></pre><h3 id="6-rmdir"><a href="#6-rmdir" class="headerlink" title="6.rmdir"></a>6.rmdir</h3><p><strong>从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对其父目录的写权限。</strong></p><p><strong>（注：不能删除非空目录）</strong></p><pre class=" language-cmd"><code class="language-cmd">实例：rmdir -p parent/child/child2 当parent子目录被删除后成为空目录的话，则顺便一并删除</code></pre><h3 id="7-mv命令"><a href="#7-mv命令" class="headerlink" title="7.mv命令"></a>7.mv命令</h3><p><strong>移动文件或修改文件名，根据第二参数类型决定（如目录，则移动文件；如为文件则重命名该文件）。</strong></p><p><strong>当第二个参数为目录时，可将多个文件以空格分隔作为第一参数，移动多个文件到参数2指定的目录中。</strong></p><pre class=" language-cmd"><code class="language-cmd">实例：mv test.log test1.txt 将文件test.log重命名为test1.txtmv log1.txt log2.txt log3.txt /test3 将log1.txt，log2.txt，log3.txt移动到test3目录中mv -i log1.txt log2.txt 将文件file1改名为file2，如果file2已经存在，则询问是否覆盖mv * ../ 移动当前文件夹下的所有文件到上一级目录</code></pre><h3 id="8-cp命令"><a href="#8-cp命令" class="headerlink" title="8.cp命令"></a>8.cp命令</h3><p><strong>将源文件复制至目标文件，或将多个源文件复制至目标目录。</strong></p><p><strong>（注：命令行复制，如果目标文件已经存在会提示是否覆盖，而在shell脚本中，如果不加-i参数，则不会提示，而是直接覆盖！）</strong></p><pre class=" language-cmd"><code class="language-cmd">-i 提示-r 复制目录及目录内所有项目-a 复制的文件与原文件时间一样实例：cp -ai a.txt test      复制a.txt到test目录下，保持原文件时间,如果原文件存在提示是否覆盖cp -s a.txt link_a.txt 为a.txt建立一个链接（快捷方式）</code></pre><h3 id="9-cat命令"><a href="#9-cat命令" class="headerlink" title="9.cat命令"></a>9.cat命令</h3><pre class=" language-cmd"><code class="language-cmd">cat filename 一次显示整个文件cat > filename 从键盘创建一个文件,只能创建新文件,不能编辑已有文件.cat file1 file2 > file 将几个文件合并为一个文件-b 对非空输出行号-n 输出所有行号实例：cat -n log1.log log2.log 把log1.log的文件内容加上行号n后输入log2.log这个文件里cat -b log1.log log2.log log3.log 把log1.log和log2.log的文件内容加上行号（空白行不加）之后将内容附加到log.log里 cat >log.txt <<EOF 使用here doc生成新文件</code></pre><h3 id="10-more命令"><a href="#10-more命令" class="headerlink" title="10.more命令"></a>10.more命令</h3><p><strong>功能类似于cat, more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示</strong></p><pre class=" language-cmd"><code class="language-cmd">->>命令参数：+n 从笫n行开始显示-n 定义屏幕大小为n行+/pattern 在每个档案显示前搜寻该字符（pattern），然后从该字符串前两行之后开始显示-c 从顶部清屏，然后显示-d 提示“Press space to continue，’q’ to quit（按空格键继续，按q键退出）”，禁用响铃功能-l (L)忽略Ctrl+l（换页）字符-p 通过清除窗口而不是滚屏来对文件进行换页，与-c选项相似-s 把连续的空行显示为一行-u 把文件内容中的下划线去掉->>常用操作命令：Enter 向下n行，需要定义，默认为1行Ctrl+F 向下滚动一屏空格键 向下滚动一屏Ctrl+B 返回上一屏=  输出当前行的行号:f 输出文件名和当前行的行号V 调用vi编辑器! 调用shell，并执行命令q 退出more实例：more +3 text.txt 显示从第3行起的内容ls -l |more -5   列出文件目录详细信息，借助管道每次显示5行，按空格显示下5行</code></pre><h3 id="11-less命令"><a href="#11-less命令" class="headerlink" title="11.less命令"></a>11.less命令</h3><p><strong>less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件</strong></p><pre class=" language-cmd"><code class="language-cmd">->>常用命令参数：-i 忽略搜索时的大小写-N 显示每行的行号-o <文件名> 将less输出的内容在指定的文件中保存起来-s 显示连续空行为一行/字符串: 向下搜索"字符串"的功能?字符串: 向上搜索"字符串"的功能n: 重复前一个搜索（与/或?有关）N: 反向重复前一个搜索（与/或?有关）-x <数字> 将"tab"键显示为规定的数字空格b 向后翻一页d 向后翻半页h 显示帮助界面Q 退出less命令u 向前滚动半页y 向前滚动一行空格键 滚动一行回车键 滚动一页[pagedown]: 向下翻动一页[pageup]: 向上翻动一页实例：ps -aux |less -N ps查看进程信息并通过less分页less 1.log 2.log 查看多个文件，可以使用n查看下一个，使用p查看前一个</code></pre><h3 id="12-head命令"><a href="#12-head命令" class="headerlink" title="12.head命令"></a>12.head命令</h3><p><strong>head命令用于显示文件文字区块。</strong></p><pre class=" language-cmd"><code class="language-cmd">格式：head [参数][文件]-q        隐藏文件名-v        显示文件名-c <字节>  显示字节数-n <行数>  显示的行数（行数为负数表示从后向前数）实例：head -n 5 head.txt 显示前5行head -c 5 head.txt 显示前5个字节</code></pre><h3 id="13-tail命令"><a href="#13-tail命令" class="headerlink" title="13.tail命令"></a>13.tail命令</h3><p><strong>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</strong></p><pre class=" language-cmd"><code class="language-cmd">->>常用参数：-f 循环读取（常用于查看递增的日志文件）-n <行数> 显示行数（从后向前）实例：tail -f filename 监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10）tail -r -n 20 filename 逆序显示filename最后10行</code></pre><h3 id="14-which命令"><a href="#14-which命令" class="headerlink" title="14.which命令"></a>14.which命令</h3><p><strong>在PATH变量指定的路径中搜索某个系统命令的位置并且返回第一个搜索结果。</strong></p><pre class=" language-cmd"><code class="language-cmd">-n 指定文件名长度指定的长度必须大于或等于所有文件中最长的文件名。-p 与-n参数相同但此处的包括了文件的路径。-a 将PATH目录中可以找到指令均列出不止第一个而已。-w 指定输出时栏位的宽度。-V 显示版本信息实例：which ls   查看ls命令是否存在which bash 查看指令"bash"的绝对路径which cd   （显示不存在，因为cd是内建命令，而which查找显示的是PATH中的命令）</code></pre><h3 id="15-whereis命令"><a href="#15-whereis命令" class="headerlink" title="15.whereis命令"></a>15.whereis命令</h3><p><strong>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。whereis及locate都是基于系统内建的数据库进行搜索，因此效率很高，而find则是遍历硬盘查找文件。</strong></p><pre class=" language-cmd"><code class="language-cmd">->>常用参数：-b 定位可执行文件-m 定位帮助文件-s 定位源代码文件-u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件。实例：whereis locate    查找localte程序相关文件whereis -s locate 查找locate的源码文件whereis -m locate 查找locate的帮助文件</code></pre><h3 id="16-locate命令"><a href="#16-locate命令" class="headerlink" title="16.locate命令"></a>16.locate命令</h3><p><strong>locate通过搜寻系统内建文档数据库快速找到档案，数据库由updatedb程序来更新，updatedb是由cron daemon周期性调用的。 locate与find命令相似，可以使用如*、?等进行正则匹配查找</strong></p><pre class=" language-cmd"><code class="language-cmd">->>常用参数：-l num (要显示的行数)-f 将特定的档案系统排除在外，如将proc排除在外-r 使用正则运算式做为寻找条件实例：locate pwd 查找和pwd相关的所有文件（文件名包含pwd）locate /etc/sh 搜索etc目录下所有以sh开头的文件locate -r '^/var.*reason$' （其中.表示一个字符，*表示任务多个；.*表示任意多个字符）查找/var目录下，以reason结尾的文件</code></pre><h3 id="17-find命令"><a href="#17-find命令" class="headerlink" title="17.find命令"></a>17.find命令</h3><p><strong>用于在文件树中查找文件，并作出相应的处理</strong></p><pre class=" language-cmd"><code class="language-cmd">命令格式: find pathname -options [-print -exec -ok ...]find ./ -type f 查找文件find ./ -type d 查找目录find ./ -name test 查找名字为test的文件或目录find ./ -regex .*so.*\.gz 查找名字符合正则表达式的文件,注意前面的‘.*’(查找到的文件带有目录)find ./ -type d -print -exec ls {} \; 查找目录并列出目录下的文件(为找到的每一个目录单独执行ls命令，没有选项-print时文件列表前一行不会显示目录名称)find ./ -type d -ok ls {} \; 查找目录并列出目录下的文件(为找到的每一个目录单独执行ls命令,执行命令前需要确认)find ./ -type d -exec ls {} + 查找目录并列出目录下的文件(将找到的目录添加到ls命令后一次执行，参数过长时会分多次执行) find ./ -name \*.c 查找文件名匹配*.c的文件find ./ -name test -print -exec cat {} \; 打印test文件名后，打印test文件的内容find ./ -name test -exec cat {} \; 不打印test文件名，只打印test文件的内容find ./ -mtime -2   查找文件更新日时在距现在时刻二天以内的文件find ./ -mtime +2   查找文件更新日时在距现在时刻二天以上的文件find ./ -mtime 2    查找文件更新日时在距现在时刻一天以上二天以内的文件find ./ -mmin -2    查找文件更新日时在距现在时刻二分以内的文件find ./ -mmin +2    查找文件更新日时在距现在时刻二分以上的文件find ./ -mmin 2     查找文件更新日时在距现在时刻一分以上二分以内的文件find ./ -newer abc  查找文件更新时间比文件abc的内容更新时间新的文件find ./ -anewer abc 查找文件访问时间比文件abc的内容更新时间新的文件find ./ -empty      查找空文件或空目录find ./ -empty -type f -print -delete 查找空文件并删除find ./ -perm 664   查找权限为644的文件或目录(需完全符合)find ./ -perm -664  查找用户/组权限为读写，其他用户权限为读(其他权限不限)的文件或目录查找用户有写权限或者组用户有写权限的文件或目录find ./ -perm /220find ./ -perm /u+w,g+wfind ./ -perm /u=w,g=wfind ./ -perm -u=r 查找所有者权限有读权限的目录或文件find ./ -perm -g=r 查找用户组权限有读权限的目录或文件find ./ -perm -o=r 查找其它用户权限有读权限的目录或文件find ./ -user lzj  查找所有者为lzj的文件或目录find ./ -group gname 查找组名为gname的文件或目录find ./ -nouser 查找文件的用户ID不存在的文件find ./ -nogroup 查找文件的组ID不存在的文件find ./ -executable \! -readable 查找有执行权限但没有可读权限的文件find ./ -size -10c 查找文件size小于10个字节的文件或目录find ./ -size 10c  查找文件size等于10个字节的文件或目录find ./ -size +10c 查找文件size大于10个字节的文件或目录find ./ -size -10k 查找文件size小于10k的文件或目录find ./ -size -10M 查找文件size小于10M的文件或目录find ./ -size -10G 查找文件size小于10G的文件或目录</code></pre><p><a href="https://www.cnblogs.com/gaojun/p/3359355.html" target="_blank" rel="noopener">本文参考</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
             
         </tags>
       

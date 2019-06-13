@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://msjx.site/"/>
-  <updated>2019-02-22T02:14:26.695Z</updated>
+  <updated>2019-06-13T12:47:33.420Z</updated>
   <id>http://msjx.site/</id>
   
   <author>
@@ -15,32 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Django+Nginx post 500</title>
-    <link href="http://msjx.site/2019/02/22/django-nginx/"/>
-    <id>http://msjx.site/2019/02/22/django-nginx/</id>
-    <published>2019-02-22T02:07:24.000Z</published>
-    <updated>2019-02-22T02:14:26.695Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Django-Nginx-uWsgi-的错误记录&quot;&gt;&lt;a href=&quot;#Django-Nginx-uWsgi-的错误记录&quot; class=&quot;headerlink&quot; title=&quot;Django + Nginx  + uWsgi 的错误记录&quot;&gt;&lt;/a&gt;Django +
-        
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="http://msjx.site/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://msjx.site/tags/Python/"/>
-    
-  </entry>
   
   <entry>
     <title>Ubuntu 16.04 Django部署（Nginx + uWsgi + Supervisor）</title>
@@ -99,6 +73,32 @@
       <category term="Python" scheme="http://msjx.site/tags/Python/"/>
     
       <category term="加密" scheme="http://msjx.site/tags/%E5%8A%A0%E5%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux Command</title>
+    <link href="http://msjx.site/2018/09/22/linux/"/>
+    <id>http://msjx.site/2018/09/22/linux/</id>
+    <published>2018-09-22T02:07:24.000Z</published>
+    <updated>2019-06-13T12:53:46.567Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;1-ls命令&quot;&gt;&lt;a href=&quot;#1-ls命令&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://msjx.site/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://msjx.site/tags/Linux/"/>
     
   </entry>
   
