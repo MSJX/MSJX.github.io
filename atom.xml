@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>MSJX</title>
   
-  <subtitle>restart</subtitle>
+  <subtitle>Restart</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://msjx.site/"/>
